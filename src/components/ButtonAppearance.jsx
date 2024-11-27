@@ -125,13 +125,13 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
         <ColorPicker
           name="hoverIconColor"
           label="Hover Icon Color"
-          value={settings.hoverIconColor || "#000"}
+          value={settings.hoverIconColor || "#fff"}
           handleInputChange={handleInputChange}
         />
         <ColorPicker
           name="bgColor"
           label="Background Color"
-          value={settings.bgColor || "#000"}
+          value={settings.bgColor || "#004CFF"}
           handleInputChange={handleInputChange}
         />
         <ColorPicker

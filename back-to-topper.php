@@ -27,7 +27,7 @@ function twsbtt_customize_panel() {
         'manage_options',
         'back-to-topper-customize-panel',
         'twsbtt_admin_page',
-        'dashicons-arrow-up-alt',
+        'dashicons-arrow-up-alt2',
         5
     );
 }
@@ -109,7 +109,7 @@ add_action( 'wp_enqueue_scripts', 'twsbtt_enqueue_assets' );
  */
 function twsbtt_display_scroll_to_top_button() {
     $options = get_option( 'twsbtt_plugin_settings' );
-    $icon = isset( $options['icon'] ) ? $options['icon'] : '/public/svg/arrow-2.svg';
+    $icon = isset( $options['icon'] ) ? $options['icon'] : '/public/svg/arrow-15.svg';
 
     $svg_file_path = plugin_dir_url( __FILE__ ) . $icon;
     $svg_content = file_get_contents( $svg_file_path );
@@ -129,9 +129,9 @@ function twsbtt_dynamic_style() {
 
     $default_options = array(
         'iconColor'        => '#ffffff',
-        'hoverIconColor'   => '#000000',
-        'bgColor'          => '#000000',
-        'hoverBgColor'     => '#00a96e',
+        'hoverIconColor'   => '#ffffff',
+        'bgColor'          => '#004CFF',
+        'hoverBgColor'     => '#000000',
         'left'             => null,
         'right'            => 20,
         'bottom'           => 20,
