@@ -4,6 +4,7 @@ import ScrollSettings from "./components/ScrollSettings";
 import ButtonAppearance from "./components/ButtonAppearance";
 import Positioning from "./components/Positioning";
 
+// Define the initial settings with default values
 const initialSettings = {
   enabled: true,
   autoHide: false,
@@ -29,18 +30,19 @@ const initialSettings = {
 };
 
 const AllSettings = () => {
+  // State for managing the active tab and settings
   const [activeTab, setActiveTab] = useState(0);
   const [settings, setSettings] = useState(initialSettings);
 
-  // Load initial settings from the WordPress backend
+  // Load initial settings from a global object (e.g., WordPress)
   useEffect(() => {
     if (window.backToTopperSettings) {
       setSettings(window.backToTopperSettings.settings || initialSettings);
     }
   }, []);
 
-  // Handle changes to input fields
-  const handleChange = (e) => {
+  // Handle input field changes and update the corresponding setting
+  const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setSettings((prevSettings) => ({
       ...prevSettings,
@@ -48,28 +50,40 @@ const AllSettings = () => {
     }));
   };
 
-  const tabs = [
+  // Tabs to display in the settings panel
+  const tabTitles = [
     "General Settings",
     "Scroll Settings",
     "Button Appearance",
     "Positioning",
   ];
 
+  // Content for each tab
   const tabContents = [
-    <GeneralSettings settings={settings} handleChange={handleChange} />,
-    <ScrollSettings settings={settings} handleChange={handleChange} />,
-    <ButtonAppearance settings={settings} handleChange={handleChange} />,
+    <GeneralSettings
+      settings={settings}
+      handleInputChange={handleInputChange}
+    />,
+    <ScrollSettings
+      settings={settings}
+      handleInputChange={handleInputChange}
+    />,
+    <ButtonAppearance
+      settings={settings}
+      handleInputChange={handleInputChange}
+    />,
     <Positioning
       settings={settings}
-      handleChange={handleChange}
+      handleInputChange={handleInputChange}
       setSettings={setSettings}
     />,
   ];
 
   return (
     <div className="w-full">
+      {/* Tab navigation buttons */}
       <div className="flex space-x-4 border-b">
-        {tabs.map((tab, index) => (
+        {tabTitles.map((tabTitle, index) => (
           <button
             key={index}
             className={`py-2 px-4 focus:outline-none ${
@@ -79,10 +93,12 @@ const AllSettings = () => {
             }`}
             onClick={() => setActiveTab(index)}
           >
-            {tab}
+            {tabTitle}
           </button>
         ))}
       </div>
+
+      {/* Display the content of the selected tab */}
       <div className="p-4">{tabContents[activeTab]}</div>
     </div>
   );

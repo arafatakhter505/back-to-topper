@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const ScrollSettings = ({ settings, handleChange }) => {
+const ScrollSettings = ({ settings, handleInputChange }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   // Handle form submission (save settings)
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     // Get the nonce from the global window object
     const nonce = window.backToTopperSettings.nonce;
 
-    const response = await fetch(window.backToTopperSettings.apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-WP-Nonce": nonce, // Add nonce to the request for authentication
-      },
-      body: JSON.stringify(settings),
-    });
+    try {
+      const response = await fetch(window.backToTopperSettings.apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-WP-Nonce": nonce, // Add nonce to the request for authentication
+        },
+        body: JSON.stringify(settings),
+      });
 
-    const result = await response.json();
-    if (response.ok) {
-      toast.success("Settings saved successfully!");
-    } else {
-      toast.error(`Failed to save settings: ${result.message}`);
+      const result = await response.json();
+      if (response.ok) {
+        toast.success("Settings saved successfully!");
+      } else {
+        toast.error(`Failed to save settings: ${result.message}`);
+      }
+    } catch (error) {
+      toast.error("An error occurred while saving settings.");
+      console.error("Error during settings save:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,26 +47,32 @@ const ScrollSettings = ({ settings, handleChange }) => {
             type="number"
             name="scrollDuration"
             value={settings.scrollDuration || 0}
-            onChange={handleChange}
+            onChange={handleInputChange}
             placeholder="Scroll Duration (ms)"
             className="input input-bordered w-full max-w-xs input-sm"
+            aria-label="Scroll Duration"
+            min="0"
           />
         </label>
       </div>
+
+      {/* Uncomment this part if needed */}
       {/* <label className="label cursor-pointer flex gap-2 w-[160px]">
         <input
           type="checkbox"
           name="calculation"
           checked={settings.calculation || false}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <span className="label-text">Calculation Enabled</span>
       </label> */}
+
       <button
         type="submit"
-        className="btn btn-success text-white w-[100px] btn-sm"
+        className={`btn btn-success text-white w-[100px] btn-sm`}
+        disabled={isLoading} // Disable the button when loading
       >
-        Save
+        {isLoading ? "Saving..." : "Save"}
       </button>
     </form>
   );

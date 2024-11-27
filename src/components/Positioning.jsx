@@ -1,51 +1,51 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const Positioning = ({ settings, handleChange, setSettings }) => {
+const Positioning = ({ settings, handleInputChange, setSettings }) => {
   const [isRight, setIsRight] = useState(settings.right !== "");
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Handle Position changes
-  const handlePositionChange = (e) => {
-    if (isRight) {
-      setSettings((prevSettings) => ({
-        ...prevSettings,
-        bottom: 20,
-        right: "",
-        left: 20,
-      }));
-      setIsRight(!isRight);
-    } else {
-      setSettings((prevSettings) => ({
-        ...prevSettings,
-        bottom: 20,
-        right: 20,
-        left: "",
-      }));
-      setIsRight(!isRight);
-    }
+  // Handle position toggle between left and right
+  const handlePositionToggle = () => {
+    const newIsRight = !isRight;
+    setIsRight(newIsRight);
+
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      right: newIsRight ? 20 : "",
+      left: newIsRight ? "" : 20,
+    }));
   };
 
   // Handle form submission (save settings)
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     // Get the nonce from the global window object
     const nonce = window.backToTopperSettings.nonce;
 
-    const response = await fetch(window.backToTopperSettings.apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-WP-Nonce": nonce, // Add nonce to the request for authentication
-      },
-      body: JSON.stringify(settings),
-    });
+    try {
+      const response = await fetch(window.backToTopperSettings.apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-WP-Nonce": nonce, // Add nonce to the request for authentication
+        },
+        body: JSON.stringify(settings),
+      });
 
-    const result = await response.json();
-    if (response.ok) {
-      toast.success("Settings saved successfully!");
-    } else {
-      toast.error(`Failed to save settings: ${result.message}`);
+      const result = await response.json();
+      if (response.ok) {
+        toast.success("Settings saved successfully!");
+      } else {
+        toast.error(`Failed to save settings: ${result.message}`);
+      }
+    } catch (error) {
+      toast.error("An error occurred while saving settings.");
+      console.error("Error during settings save:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -57,7 +57,7 @@ const Positioning = ({ settings, handleChange, setSettings }) => {
           type="checkbox"
           className="!toggle !border-[#1F2937] !bg-[#1F2937] !hover:bg-[#8F949B] checked:bg-[#1F2937] checked:border-[#1F2937]"
           checked={isRight}
-          onChange={handlePositionChange}
+          onChange={handlePositionToggle}
         />
         <span>Right</span>
       </div>
@@ -73,7 +73,7 @@ const Positioning = ({ settings, handleChange, setSettings }) => {
               type="number"
               name="right"
               value={settings.right || 20}
-              onChange={handleChange}
+              onChange={handleInputChange}
               placeholder="Right"
               className="input input-bordered w-full max-w-xs input-sm"
             />
@@ -89,7 +89,7 @@ const Positioning = ({ settings, handleChange, setSettings }) => {
               type="number"
               name="left"
               value={settings.left || 20}
-              onChange={handleChange}
+              onChange={handleInputChange}
               placeholder="Left"
               className="input input-bordered w-full max-w-xs input-sm"
             />
@@ -106,7 +106,7 @@ const Positioning = ({ settings, handleChange, setSettings }) => {
             type="number"
             name="bottom"
             value={settings.bottom || 20}
-            onChange={handleChange}
+            onChange={handleInputChange}
             placeholder="Bottom"
             className="input input-bordered w-full max-w-xs input-sm"
           />
@@ -114,9 +114,10 @@ const Positioning = ({ settings, handleChange, setSettings }) => {
       </div>
       <button
         type="submit"
-        className="btn btn-success text-white w-[100px] btn-sm"
+        className={`btn btn-success text-white w-[100px] btn-sm`}
+        disabled={isLoading} // Disable the button when loading
       >
-        Save
+        {isLoading ? "Saving..." : "Save"}
       </button>
     </form>
   );

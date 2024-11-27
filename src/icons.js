@@ -1,41 +1,19 @@
-import {
-  Arrow1,
-  Arrow10,
-  Arrow11,
-  Arrow12,
-  Arrow13,
-  Arrow14,
-  Arrow15,
-  Arrow16,
-  Arrow17,
-  Arrow2,
-  Arrow3,
-  Arrow4,
-  Arrow5,
-  Arrow6,
-  Arrow7,
-  Arrow8,
-  Arrow9,
-} from "../public/svg";
+// Import React icons dynamically based on a consistent naming pattern
+import * as ArrowIcons from "../public/svg";
 
-const icons = [
-  { src: "/public/svg/arrow-1.svg", icon: <Arrow1 /> },
-  { src: "/public/svg/arrow-2.svg", icon: <Arrow2 /> },
-  { src: "/public/svg/arrow-3.svg", icon: <Arrow3 /> },
-  { src: "/public/svg/arrow-4.svg", icon: <Arrow4 /> },
-  { src: "/public/svg/arrow-5.svg", icon: <Arrow5 /> },
-  { src: "/public/svg/arrow-6.svg", icon: <Arrow6 /> },
-  { src: "/public/svg/arrow-7.svg", icon: <Arrow7 /> },
-  { src: "/public/svg/arrow-8.svg", icon: <Arrow8 /> },
-  { src: "/public/svg/arrow-9.svg", icon: <Arrow9 /> },
-  { src: "/public/svg/arrow-10.svg", icon: <Arrow10 /> },
-  { src: "/public/svg/arrow-11.svg", icon: <Arrow11 /> },
-  { src: "/public/svg/arrow-12.svg", icon: <Arrow12 /> },
-  { src: "/public/svg/arrow-13.svg", icon: <Arrow13 /> },
-  { src: "/public/svg/arrow-14.svg", icon: <Arrow14 /> },
-  { src: "/public/svg/arrow-15.svg", icon: <Arrow15 /> },
-  { src: "/public/svg/arrow-16.svg", icon: <Arrow16 /> },
-  { src: "/public/svg/arrow-17.svg", icon: <Arrow17 /> },
-];
+/**
+ * Array of arrow icon components with their corresponding file names.
+ * This dynamically imports icons based on a consistent naming scheme.
+ * @returns {Array} Array of icon objects containing `src` and `icon` properties
+ */
+const icons = Array.from({ length: 17 }, (_, index) => {
+  const iconName = `Arrow${index + 1}`;
+  const IconComponent = ArrowIcons[iconName];
+
+  return {
+    src: `/public/svg/arrow-${index + 1}.svg`,
+    icon: IconComponent ? <IconComponent /> : null,
+  };
+});
 
 export default icons;
