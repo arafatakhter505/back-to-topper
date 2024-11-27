@@ -31,19 +31,6 @@ const ScrollSettings = ({ settings, handleChange }) => {
       <div className="flex flex-row items-center gap-5">
         <label className="form-control w-full max-w-xs">
           <div className="label">
-            <span className="label-text">Scroll Offset</span>
-          </div>
-          <input
-            type="number"
-            name="scrollOffset"
-            value={settings.scrollOffset || 0}
-            onChange={handleChange}
-            placeholder="Scroll Offset"
-            className="input input-bordered w-full max-w-xs input-sm"
-          />
-        </label>
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
             <span className="label-text">Scroll Duration (ms)</span>
           </div>
           <input
@@ -56,7 +43,7 @@ const ScrollSettings = ({ settings, handleChange }) => {
           />
         </label>
       </div>
-      <label className="label cursor-pointer flex gap-2 w-[160px]">
+      {/* <label className="label cursor-pointer flex gap-2 w-[160px]">
         <input
           type="checkbox"
           name="calculation"
@@ -64,7 +51,7 @@ const ScrollSettings = ({ settings, handleChange }) => {
           onChange={handleChange}
         />
         <span className="label-text">Calculation Enabled</span>
-      </label>
+      </label> */}
       <button
         type="submit"
         className="btn btn-success text-white w-[100px] btn-sm"

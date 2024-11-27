@@ -55,7 +55,7 @@ const Positioning = ({ settings, handleChange, setSettings }) => {
         <span>Left</span>
         <input
           type="checkbox"
-          className="!toggle !border-[#1F2937] !bg-[#1F2937] !hover:bg-[#8F949B]"
+          className="!toggle !border-[#1F2937] !bg-[#1F2937] !hover:bg-[#8F949B] checked:bg-[#1F2937] checked:border-[#1F2937]"
           checked={isRight}
           onChange={handlePositionChange}
         />

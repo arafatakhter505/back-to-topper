@@ -1,5 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
+import icons from "../icons";
 
 const GeneralSettings = ({ settings, handleChange }) => {
   // Handle form submission (save settings)
@@ -56,6 +57,23 @@ const GeneralSettings = ({ settings, handleChange }) => {
           />
           <span className="label-text">Hide On Small Device</span>
         </label>
+      </div>
+      <div className="flex flex-row items-center gap-8 flex-wrap">
+        {icons.map((item) => (
+          <div key={item.src} className="flex items-center gap-2">
+            <input
+              type="radio"
+              id={item.src}
+              name="icon"
+              value={item.src}
+              checked={settings.icon === item.src}
+              onChange={handleChange}
+            />
+            <label htmlFor={item.src} className="w-10 h-10 cursor-pointer">
+              {item.icon}
+            </label>
+          </div>
+        ))}
       </div>
       <button
         type="submit"

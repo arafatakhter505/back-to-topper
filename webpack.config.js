@@ -22,6 +22,10 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"], // Use svgr to import SVGs as React components
+      },
     ],
   },
   resolve: {

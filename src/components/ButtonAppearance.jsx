@@ -31,12 +31,14 @@ const ButtonAppearance = ({ settings, handleChange }) => {
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 flex-wrap">
         <label className="form-control w-full">
           <div className="label">
-            <span className="label-text">Button Width (px)</span>
+            <span className="label-text">
+              Button Width <small>(px)</small>
+            </span>
           </div>
           <input
             type="number"
             name="width"
-            value={settings.width || 0}
+            value={settings.width || 50}
             onChange={handleChange}
             placeholder="Button Width"
             className="input input-bordered w-full input-sm"
@@ -44,12 +46,14 @@ const ButtonAppearance = ({ settings, handleChange }) => {
         </label>
         <label className="form-control w-full">
           <div className="label">
-            <span className="label-text">Button Height (px)</span>
+            <span className="label-text">
+              Button Height <small>(px)</small>
+            </span>
           </div>
           <input
             type="number"
             name="height"
-            value={settings.height || 0}
+            value={settings.height || 50}
             onChange={handleChange}
             placeholder="Button Height"
             className="input input-bordered w-full input-sm"
@@ -57,27 +61,91 @@ const ButtonAppearance = ({ settings, handleChange }) => {
         </label>
         <label className="form-control w-full">
           <div className="label">
-            <span className="label-text">Button Opacity</span>
+            <span className="label-text">
+              Border Radius <small>(px)</small>
+            </span>
           </div>
           <input
             type="number"
-            name="opacity"
-            value={settings.opacity || 0}
+            name="borderRadius"
+            value={settings.borderRadius || 15}
             onChange={handleChange}
-            placeholder="Button Opacity"
+            placeholder="Border Radius"
             className="input input-bordered w-full input-sm"
           />
         </label>
         <label className="form-control w-full">
           <div className="label">
-            <span className="label-text">Button Fade Duration (ms)</span>
+            <span className="label-text">
+              Hover Border Radius <small>(px)</small>
+            </span>
           </div>
           <input
             type="number"
-            name="fadeDuration"
-            value={settings.fadeDuration || 0}
+            name="hoverBorderRadius"
+            value={settings.hoverBorderRadius || 5}
             onChange={handleChange}
-            placeholder="Button Fade Duration (ms)"
+            placeholder="Hover Border Radius"
+            className="input input-bordered w-full input-sm"
+          />
+        </label>
+        <label className="form-control w-full">
+          <div className="label">
+            <span className="label-text">
+              Padding Top <small>(px)</small>
+            </span>
+          </div>
+          <input
+            type="number"
+            name="paddingTop"
+            value={settings.paddingTop || 10}
+            onChange={handleChange}
+            placeholder="Padding Top"
+            className="input input-bordered w-full input-sm"
+          />
+        </label>
+        <label className="form-control w-full">
+          <div className="label">
+            <span className="label-text">
+              Padding Bottom <small>(px)</small>
+            </span>
+          </div>
+          <input
+            type="number"
+            name="paddingBottom"
+            value={settings.paddingBottom || 10}
+            onChange={handleChange}
+            placeholder="Padding Bottom"
+            className="input input-bordered w-full input-sm"
+          />
+        </label>
+        <label className="form-control w-full">
+          <div className="label">
+            <span className="label-text">
+              Padding Left <small>(px)</small>
+            </span>
+          </div>
+          <input
+            type="number"
+            name="paddingLeft"
+            value={settings.paddingLeft || 10}
+            onChange={handleChange}
+            placeholder="Padding Left"
+            className="input input-bordered w-full input-sm"
+          />
+        </label>
+        <label className="form-control w-full">
+          <div className="label">
+            <span className="label-text">
+              Padding Right <small>(px)</small>
+            </span>
+          </div>
+          <input
+            type="number"
+            name="paddingRight"
+            value={settings.paddingRight || 10}
+            onChange={handleChange}
+            placeholder="Padding Right"
             className="input input-bordered w-full input-sm"
           />
         </label>
@@ -85,14 +153,27 @@ const ButtonAppearance = ({ settings, handleChange }) => {
       <div className="flex flex-row items-center gap-5 flex-wrap">
         <label className="form-control flex flex-row-reverse items-center gap-1 border rounded h-[35px] p-1">
           <div className="label">
-            <span className="label-text">Text Color</span>
+            <span className="label-text">Icon Color</span>
           </div>
           <input
             type="color"
-            name="textColor"
-            value={settings.textColor || "#000"}
+            name="iconColor"
+            value={settings.iconColor || "#fff"}
             onChange={handleChange}
-            placeholder="Text Color"
+            placeholder="Icon Color"
+            className="!border-0 p-0 w-[40px] input-sm"
+          />
+        </label>
+        <label className="form-control flex flex-row-reverse items-center gap-1 border rounded h-[35px] p-1">
+          <div className="label">
+            <span className="label-text">Hover Icon Color</span>
+          </div>
+          <input
+            type="color"
+            name="hoverIconColor"
+            value={settings.hoverIconColor || "#000"}
+            onChange={handleChange}
+            placeholder="Hover Icon Color"
             className="!border-0 p-0 w-[40px] input-sm"
           />
         </label>
@@ -106,19 +187,6 @@ const ButtonAppearance = ({ settings, handleChange }) => {
             value={settings.bgColor || "#000"}
             onChange={handleChange}
             placeholder="Background Color"
-            className="!border-0 p-0 w-[40px] input-sm"
-          />
-        </label>
-        <label className="form-control flex flex-row-reverse items-center gap-1 border rounded h-[35px] p-1">
-          <div className="label">
-            <span className="label-text">Hover Text Color</span>
-          </div>
-          <input
-            type="color"
-            name="hoverTextColor"
-            value={settings.hoverTextColor || "#000"}
-            onChange={handleChange}
-            placeholder="Text Color"
             className="!border-0 p-0 w-[40px] input-sm"
           />
         </label>

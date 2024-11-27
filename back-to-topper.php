@@ -77,20 +77,40 @@ add_action('admin_enqueue_scripts', 'twsbtt_enqueue_script');
 function twsbtt_enqueue_assets() {
     wp_enqueue_style('twsbtt-style', plugins_url('public/css/styles.css', __FILE__));
     wp_enqueue_script('twsbtt-script', plugins_url('public/js/script.js', __FILE__), [], null, true);
+
+    wp_localize_script('twsbtt-script', 'backToTopperSettings', array(
+        'apiUrl' => esc_url(rest_url('back-to-topper-plugin/v1/settings')),
+        'settings' => get_option('twsbtt_plugin_settings'),
+        'nonce' => wp_create_nonce('wp_rest') // Add nonce for REST API authentication
+    ));
 }
 add_action('wp_enqueue_scripts', 'twsbtt_enqueue_assets');
 
 // Display the "Scroll to Top" button
 function twsbtt_display_scroll_to_top_button() {
-    echo '<button id="twsbttScrollToTopBtn" class="twsbtt-scroll-to-top">↑</button>';
+    $options = get_option("twsbtt_plugin_settings");
+    $icon = isset($options['icon']) ? $options['icon'] : "/public/svg/arrow-2.svg";
+    
+    if (empty($svg_file_path)) {
+        $svg_file_path = plugin_dir_url(__FILE__) . $icon;
+    }
+
+    // Read the contents of the SVG file
+    $svg_content = file_get_contents($svg_file_path);
+
+    // Ensure the SVG content is valid and sanitize it for safe output
+    if ($svg_content !== false) {
+        // Output the button with the SVG icon (directly injected inline)
+        echo '<button id="twsbttScrollToTopBtn" class="twsbtt-scroll-to-top">' . $svg_content . '</button>';
+    }
 }
 add_action('wp_footer', 'twsbtt_display_scroll_to_top_button');
 
 // Add dynamic styles in the head
 function twsbtt_dynamic_style() {
     $options = get_option("twsbtt_plugin_settings");
-    $textColor = isset($options['textColor']) ? $options['textColor'] : "#ffffff";
-    $hoverTextColor = isset($options['hoverTextColor']) ? $options['hoverTextColor'] : "#ffffff";
+    $iconColor = isset($options['iconColor']) ? $options['iconColor'] : "#ffffff";
+    $hoverIconColor = isset($options['hoverIconColor']) ? $options['hoverIconColor'] : "#000000";
     $bgColor = isset($options['bgColor']) ? $options['bgColor'] : "#000000";
     $hoverBgColor = isset($options['hoverBgColor']) ? $options['hoverBgColor'] : "#00a96e";
     $left = isset($options['left']) ? $options['left'] : null;
@@ -98,21 +118,37 @@ function twsbtt_dynamic_style() {
     $bottom = isset($options['bottom']) ? $options['bottom'] : "20";
     $width = isset($options['width']) ? $options['width'] : "50";
     $height = isset($options['height']) ? $options['height'] : "50";
+    $borderRadius = isset($options['borderRadius']) ? $options['borderRadius'] : "15";
+    $hoverBorderRadius = isset($options['hoverBorderRadius']) ? $options['hoverBorderRadius'] : "5";
+    $paddingTop = isset($options['paddingTop']) ? $options['paddingTop'] : "10";
+    $paddingBottom = isset($options['paddingBottom']) ? $options['paddingBottom'] : "10";
+    $paddingLeft = isset($options['paddingLeft']) ? $options['paddingLeft'] : "10";
+    $paddingRight = isset($options['paddingRight']) ? $options['paddingRight'] : "10";
 
     echo "<style>
         .twsbtt-scroll-to-top {
             background-color: {$bgColor};
-            color: {$textColor};
             font-size: 20px;
             left: {$left}px;
             right: {$right}px;
             bottom: {$bottom}px;
             width: {$width}px;
             height: {$height}px;
+            border-radius: {$borderRadius}px;
+            padding-top: {$paddingTop}px;
+            padding-bottom: {$paddingBottom}px;
+            padding-left: {$paddingLeft}px;
+            padding-right: {$paddingRight}px;
         }
         .twsbtt-scroll-to-top:hover {
             background-color: {$hoverBgColor};
-            color: {$hoverTextColor};
+            border-radius: {$hoverBorderRadius}px;
+        }
+        .twsbtt-scroll-to-top svg {
+            fill: {$iconColor};
+        }
+        .twsbtt-scroll-to-top:hover svg {
+            fill: {$hoverIconColor};
         }
     </style>";
     
