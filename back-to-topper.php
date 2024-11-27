@@ -18,16 +18,63 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Set default settings upon plugin activation.
+ */
+function twsbtt_set_default_settings() {
+    // Default settings array
+    $default_settings = array(
+        'enabled'          => true,
+        'autoHide'         => true,
+        'hideSmallDevice'  => true,
+        'scrollDuration'   => 500,
+        'calculation'      => true,
+        'width'            => 50,
+        'height'           => 50,
+        'borderRadius'     => 15,
+        'hoverBorderRadius'=> 5,
+        'iconColor'        => '#ffffff',
+        'hoverIconColor'   => '#ffffff',
+        'bgColor'          => '#004CFF',
+        'hoverBgColor'     => '#000000',
+        'left'             => '',
+        'right'            => 20,
+        'bottom'           => 20,
+        'icon'             => '/public/svg/arrow-15.svg',
+        'paddingTop'       => 10,
+        'paddingBottom'    => 10,
+        'paddingLeft'      => 10,
+        'paddingRight'     => 10,
+    );
+
+    // Check if settings already exist, if not, set default settings
+    if ( get_option( 'twsbtt_plugin_settings' ) === false ) {
+        update_option( 'twsbtt_plugin_settings', $default_settings );
+    }
+}
+register_activation_hook( __FILE__, 'twsbtt_set_default_settings' );
+
+/**
+ * Handle plugin uninstallation and update options accordingly.
+ */
+function twsbtt_on_plugin_uninstall() {
+    // Optionally, you can reset settings to default or remove the option entirely
+    delete_option( 'twsbtt_plugin_settings' );  // Remove the plugin settings option when uninstalled.
+}
+register_uninstall_hook( __FILE__, 'twsbtt_on_plugin_uninstall' );
+
+/**
  * Register the admin menu for the plugin settings page.
  */
 function twsbtt_customize_panel() {
+    $icon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE4LjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMTU1LjEzOSAxNTUuMTM5IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNTUuMTM5IDE1NS4xMzk7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNMTE0LjU4OCw0NS40MmgyOC4xN0w5Ny4zMzgsMGwtNDUuNDIsNDUuNDJoMjguNTE2Qzc2LjQsOTguOTM3LDQ4LjUyOSwxNDIuMTczLDEyLjM4MSwxNTIuNjg2DQoJCQljNS41MTMsMS42MDUsMTEuMjI0LDIuNDUyLDE3LjA3MSwyLjQ1MkM3My42MDEsMTU1LjEzOSwxMDkuOTQsMTA3LjExMSwxMTQuNTg4LDQ1LjQyeiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K';
+
     add_menu_page(
         __( 'Back To Topper', 'back-to-topper' ),
         __( 'Back To Topper', 'back-to-topper' ),
         'manage_options',
         'back-to-topper-customize-panel',
         'twsbtt_admin_page',
-        'dashicons-arrow-up-alt2',
+        $icon,
         5
     );
 }

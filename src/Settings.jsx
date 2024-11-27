@@ -7,7 +7,7 @@ import Positioning from "./components/Positioning";
 // Define the initial settings with default values
 const initialSettings = {
   enabled: true,
-  autoHide: false,
+  autoHide: true,
   hideSmallDevice: true,
   scrollDuration: 500,
   calculation: true,

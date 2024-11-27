@@ -61,7 +61,7 @@ const GeneralSettings = ({ settings, handleInputChange }) => {
         <CheckboxInput
           name="autoHide"
           label="Auto Hide"
-          checked={settings.autoHide || false}
+          checked={settings.autoHide || true}
           onChange={handleInputChange}
         />
         <CheckboxInput
