@@ -6,9 +6,9 @@ import icons from "../icons";
  * CheckboxInput component for reusable checkbox elements
  */
 const CheckboxInput = ({ name, label, checked, onChange }) => (
-  <label className="label cursor-pointer flex gap-2">
+  <label className="twsbtt-label twsbtt-cursor-pointer twsbtt-flex twsbtt-gap-2">
     <input type="checkbox" name={name} checked={checked} onChange={onChange} />
-    <span className="label-text">{label}</span>
+    <span className="twsbtt-label-text">{label}</span>
   </label>
 );
 
@@ -50,8 +50,8 @@ const GeneralSettings = ({ settings, handleInputChange }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="form-control flex flex-row items-center gap-5">
+    <form onSubmit={handleSubmit} className="twsbtt-space-y-5">
+      <div className="twsbtt-form-control twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-5">
         <CheckboxInput
           name="enabled"
           label="Enabled"
@@ -72,9 +72,12 @@ const GeneralSettings = ({ settings, handleInputChange }) => {
         />
       </div>
 
-      <div className="flex flex-row items-center gap-8 flex-wrap">
+      <div className="twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-8 twsbtt-flex-wrap">
         {icons.map((item) => (
-          <div key={item.src} className="flex items-center gap-2">
+          <div
+            key={item.src}
+            className="twsbtt-flex twsbtt-items-center twsbtt-gap-2"
+          >
             <input
               type="radio"
               id={item.src}
@@ -83,7 +86,10 @@ const GeneralSettings = ({ settings, handleInputChange }) => {
               checked={settings.icon === item.src}
               onChange={handleInputChange}
             />
-            <label htmlFor={item.src} className="w-10 h-10 cursor-pointer">
+            <label
+              htmlFor={item.src}
+              className="twsbtt-w-10 twsbtt-h-10 twsbtt-cursor-pointer"
+            >
               {item.icon}
             </label>
           </div>
@@ -91,7 +97,7 @@ const GeneralSettings = ({ settings, handleInputChange }) => {
       </div>
       <button
         type="submit"
-        className={`btn btn-success text-white w-[100px] btn-sm`}
+        className={`twsbtt-btn twsbtt-btn-success twsbtt-text-white twsbtt-w-[100px] twsbtt-btn-sm`}
         disabled={isLoading} // Disable the button when loading
       >
         {isLoading ? "Saving..." : "Save"}

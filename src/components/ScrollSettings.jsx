@@ -37,11 +37,11 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="flex flex-row items-center gap-5">
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text">Scroll Duration (ms)</span>
+    <form onSubmit={handleSubmit} className="twsbtt-space-y-5">
+      <div className="twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-5">
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <div className="twsbtt-label">
+            <span className="twsbtt-label-text">Scroll Duration (ms)</span>
           </div>
           <input
             type="number"
@@ -49,7 +49,7 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
             value={settings.scrollDuration || 0}
             onChange={handleInputChange}
             placeholder="Scroll Duration (ms)"
-            className="input input-bordered w-full max-w-xs input-sm"
+            className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
             aria-label="Scroll Duration"
             min="0"
           />
@@ -69,7 +69,7 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
 
       <button
         type="submit"
-        className={`btn btn-success text-white w-[100px] btn-sm`}
+        className={`twsbtt-btn twsbtt-btn-success twsbtt-text-white twsbtt-w-[100px] twsbtt-btn-sm`}
         disabled={isLoading} // Disable the button when loading
       >
         {isLoading ? "Saving..." : "Save"}

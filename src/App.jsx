@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
  */
 const App = () => {
   return (
-    <div className="bg-white rounded-lg p-5">
+    <div className="twsbtt-bg-white twsbtt-rounded-lg twsbtt-p-5">
       {/* Render settings component */}
       <AllSettings />
 

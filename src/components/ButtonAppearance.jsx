@@ -44,9 +44,9 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
   return (
     <form
       onSubmit={(e) => handleSubmit(e, settings, setIsLoading)}
-      className="space-y-5"
+      className="twsbtt-space-y-5"
     >
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 flex-wrap">
+      <div className="twsbtt-grid lg:twsbtt-grid-cols-4 md:twsbtt-grid-cols-2 twsbtt-grid-cols-1 twsbtt-gap-5 twsbtt-flex-wrap">
         {/* Button Width */}
         <FormField
           name="width"
@@ -115,7 +115,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
       </div>
 
       {/* Color Pickers for Icon and Background Colors */}
-      <div className="flex flex-row items-center gap-5 flex-wrap">
+      <div className="twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-5 twsbtt-flex-wrap">
         <ColorPicker
           name="iconColor"
           label="Icon Color"
@@ -143,7 +143,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
       </div>
       <button
         type="submit"
-        className={`btn btn-success text-white w-[100px] btn-sm`}
+        className={`twsbtt-btn twsbtt-btn-success twsbtt-text-white twsbtt-w-[100px] twsbtt-btn-sm`}
         disabled={isLoading}
       >
         {isLoading ? "Saving..." : "Save"}
@@ -156,9 +156,9 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
  * Reusable form field for number input fields
  */
 const FormField = ({ name, label, value, handleInputChange, placeholder }) => (
-  <label className="form-control w-full">
-    <div className="label">
-      <span className="label-text">
+  <label className="twsbtt-form-control twsbtt-w-full">
+    <div className="twsbtt-label">
+      <span className="twsbtt-label-text">
         {label} <small>(px)</small>
       </span>
     </div>
@@ -168,7 +168,7 @@ const FormField = ({ name, label, value, handleInputChange, placeholder }) => (
       value={value}
       onChange={handleInputChange}
       placeholder={placeholder}
-      className="input input-bordered w-full input-sm"
+      className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
     />
   </label>
 );
@@ -177,16 +177,16 @@ const FormField = ({ name, label, value, handleInputChange, placeholder }) => (
  * Reusable color picker component
  */
 const ColorPicker = ({ name, label, value, handleInputChange }) => (
-  <label className="form-control flex flex-row-reverse items-center gap-1 border rounded h-[35px] p-1">
-    <div className="label">
-      <span className="label-text">{label}</span>
+  <label className="twsbtt-form-control twsbtt-flex twsbtt-flex-row-reverse twsbtt-items-center twsbtt-gap-1 twsbtt-border twsbtt-rounded twsbtt-h-[35px] twsbtt-p-1">
+    <div className="twsbtt-label">
+      <span className="twsbtt-label-text">{label}</span>
     </div>
     <input
       type="color"
       name={name}
       value={value}
       onChange={handleInputChange}
-      className="!border-0 p-0 w-[40px] input-sm"
+      className="!twsbtt-border-0 twsbtt-p-0 twsbtt-w-[40px] twsbtt-input-sm"
     />
   </label>
 );

@@ -80,16 +80,16 @@ const AllSettings = () => {
   ];
 
   return (
-    <div className="w-full">
+    <div className="twsbtt-w-full">
       {/* Tab navigation buttons */}
-      <div className="flex space-x-4 border-b">
+      <div className="twsbtt-flex twsbtt-space-x-4 twsbtt-border-b">
         {tabTitles.map((tabTitle, index) => (
           <button
             key={index}
-            className={`py-2 px-4 focus:outline-none ${
+            className={`twsbtt-py-2 twsbtt-px-4 focus:twsbtt-outline-none ${
               activeTab === index
-                ? "border-b-2 border-blue-500 text-blue-500"
-                : "text-gray-600"
+                ? "twsbtt-border-b-2 twsbtt-border-blue-500 twsbtt-text-blue-500"
+                : "twsbtt-text-gray-600"
             }`}
             onClick={() => setActiveTab(index)}
           >
@@ -99,7 +99,7 @@ const AllSettings = () => {
       </div>
 
       {/* Display the content of the selected tab */}
-      <div className="p-4">{tabContents[activeTab]}</div>
+      <div className="twsbtt-p-4">{tabContents[activeTab]}</div>
     </div>
   );
 };

@@ -50,22 +50,22 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="flex justify-center items-center gap-5 pt-5 text-xl">
+    <form onSubmit={handleSubmit} className="twsbtt-space-y-5">
+      <div className="twsbtt-flex twsbtt-justify-center twsbtt-items-center twsbtt-gap-5 twsbtt-pt-5 twsbtt-text-xl">
         <span>Left</span>
         <input
           type="checkbox"
-          className="!toggle !border-[#1F2937] !bg-[#1F2937] !hover:bg-[#8F949B] checked:bg-[#1F2937] checked:border-[#1F2937]"
+          className="!twsbtt-toggle !twsbtt-border-[#1F2937] !twsbtt-bg-[#1F2937] !hover:twsbtt-bg-[#8F949B] checked:twsbtt-bg-[#1F2937] checked:twsbtt-border-[#1F2937]"
           checked={isRight}
           onChange={handlePositionToggle}
         />
         <span>Right</span>
       </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
+      <div className="twsbtt-grid lg:twsbtt-grid-cols-4 md:twsbtt-grid-cols-2 twsbtt-grid-cols-1 twsbtt-gap-5">
         {isRight ? (
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">
+          <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+            <div className="twsbtt-label">
+              <span className="twsbtt-label-text">
                 Right <small>(px)</small>
               </span>
             </div>
@@ -75,13 +75,13 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
               value={settings.right || 20}
               onChange={handleInputChange}
               placeholder="Right"
-              className="input input-bordered w-full max-w-xs input-sm"
+              className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
             />
           </label>
         ) : (
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">
+          <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+            <div className="twsbtt-label">
+              <span className="twsbtt-label-text">
                 Left <small>(px)</small>
               </span>
             </div>
@@ -91,14 +91,14 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
               value={settings.left || 20}
               onChange={handleInputChange}
               placeholder="Left"
-              className="input input-bordered w-full max-w-xs input-sm"
+              className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
             />
           </label>
         )}
 
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text">
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <div className="twsbtt-label">
+            <span className="twsbtt-label-text">
               Bottom <small>(px)</small>
             </span>
           </div>
@@ -108,13 +108,13 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
             value={settings.bottom || 20}
             onChange={handleInputChange}
             placeholder="Bottom"
-            className="input input-bordered w-full max-w-xs input-sm"
+            className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
           />
         </label>
       </div>
       <button
         type="submit"
-        className={`btn btn-success text-white w-[100px] btn-sm`}
+        className={`twsbtt-btn twsbtt-btn-success twsbtt-text-white twsbtt-w-[100px] twsbtt-btn-sm`}
         disabled={isLoading} // Disable the button when loading
       >
         {isLoading ? "Saving..." : "Save"}
