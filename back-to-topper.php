@@ -129,7 +129,6 @@ function twsbtt_enqueue_script() {
         wp_enqueue_script( 'twsbtt-plugin-js', plugins_url( 'dist/main.js', __FILE__ ), array( 'wp-element' ), '1.0', true );
         wp_enqueue_style( 'twsbtt-plugin-css', plugins_url( 'dist/styles.css', __FILE__ ) );
     }
-    
 
     wp_localize_script( 'twsbtt-plugin-js', 'backToTopperSettings', array(
         'apiUrl'   => esc_url( rest_url( 'back-to-topper-plugin/v1/settings' ) ),

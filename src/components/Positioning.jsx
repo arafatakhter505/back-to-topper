@@ -51,19 +51,22 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
 
   return (
     <form onSubmit={handleSubmit} className="twsbtt-space-y-5">
-      <div className="twsbtt-flex twsbtt-justify-center twsbtt-items-center twsbtt-gap-5 twsbtt-pt-5 twsbtt-text-xl">
-        <span>Left</span>
-        <input
-          type="checkbox"
-          className="!twsbtt-toggle !twsbtt-border-[#1F2937] !twsbtt-bg-[#1F2937] !hover:twsbtt-bg-[#8F949B] checked:twsbtt-bg-[#1F2937] checked:twsbtt-border-[#1F2937]"
-          checked={isRight}
-          onChange={handlePositionToggle}
-        />
-        <span>Right</span>
-      </div>
       <div className="twsbtt-grid lg:twsbtt-grid-cols-4 md:twsbtt-grid-cols-2 twsbtt-grid-cols-1 twsbtt-gap-5">
+        <label className="twsbtt-form-control twsbtt-w-full">
+          <div className="twsbtt-label">
+            <span className="twsbtt-label-text">Position</span>
+          </div>
+          <select
+            value={isRight}
+            onChange={handlePositionToggle}
+            className="twsbtt-select twsbtt-select-bordered twsbtt-select-sm"
+          >
+            <option value={false}>Left Side</option>
+            <option value={true}>Right Side</option>
+          </select>
+        </label>
         {isRight ? (
-          <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <label className="twsbtt-form-control twsbtt-w-full">
             <div className="twsbtt-label">
               <span className="twsbtt-label-text">
                 Right <small>(px)</small>
@@ -75,11 +78,11 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
               value={settings.right || 20}
               onChange={handleInputChange}
               placeholder="Right"
-              className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
+              className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
             />
           </label>
         ) : (
-          <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <label className="twsbtt-form-control twsbtt-w-full">
             <div className="twsbtt-label">
               <span className="twsbtt-label-text">
                 Left <small>(px)</small>
@@ -91,12 +94,12 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
               value={settings.left || 20}
               onChange={handleInputChange}
               placeholder="Left"
-              className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
+              className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
             />
           </label>
         )}
 
-        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+        <label className="twsbtt-form-control twsbtt-w-full">
           <div className="twsbtt-label">
             <span className="twsbtt-label-text">
               Bottom <small>(px)</small>
@@ -108,7 +111,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
             value={settings.bottom || 20}
             onChange={handleInputChange}
             placeholder="Bottom"
-            className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
+            className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
           />
         </label>
       </div>
