@@ -51,8 +51,8 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
 
   return (
     <form onSubmit={handleSubmit} className="twsbtt-space-y-5">
-      <div className="twsbtt-grid lg:twsbtt-grid-cols-4 md:twsbtt-grid-cols-2 twsbtt-grid-cols-1 twsbtt-gap-5">
-        <label className="twsbtt-form-control twsbtt-w-full">
+      <div className="twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-5">
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
           <div className="twsbtt-label">
             <span className="twsbtt-label-text">Position</span>
           </div>
@@ -66,7 +66,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
           </select>
         </label>
         {isRight ? (
-          <label className="twsbtt-form-control twsbtt-w-full">
+          <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
             <div className="twsbtt-label">
               <span className="twsbtt-label-text">
                 Right <small>(px)</small>
@@ -82,7 +82,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
             />
           </label>
         ) : (
-          <label className="twsbtt-form-control twsbtt-w-full">
+          <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
             <div className="twsbtt-label">
               <span className="twsbtt-label-text">
                 Left <small>(px)</small>
@@ -99,7 +99,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
           </label>
         )}
 
-        <label className="twsbtt-form-control twsbtt-w-full">
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
           <div className="twsbtt-label">
             <span className="twsbtt-label-text">
               Bottom <small>(px)</small>

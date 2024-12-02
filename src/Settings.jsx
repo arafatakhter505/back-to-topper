@@ -10,6 +10,7 @@ const initialSettings = {
   autoHide: true,
   hideSmallDevice: true,
   scrollDuration: 500,
+  scrollOffset: 200,
   calculation: true,
   width: 50,
   height: 50,
@@ -27,17 +28,23 @@ const initialSettings = {
   paddingBottom: 10,
   paddingLeft: 10,
   paddingRight: 10,
+  excludePages: [],
+  excludePosts: [],
 };
 
 const AllSettings = () => {
   // State for managing the active tab and settings
   const [activeTab, setActiveTab] = useState(0);
   const [settings, setSettings] = useState(initialSettings);
+  const [wpPages, setWpPages] = useState([]);
+  const [wpPosts, setWpPosts] = useState([]);
 
   // Load initial settings from a global object (e.g., WordPress)
   useEffect(() => {
     if (window.backToTopperSettings) {
       setSettings(window.backToTopperSettings.settings || initialSettings);
+      setWpPages(window.backToTopperSettings.pages || []);
+      setWpPosts(window.backToTopperSettings.posts || []);
     }
   }, []);
 
@@ -62,7 +69,10 @@ const AllSettings = () => {
   const tabContents = [
     <GeneralSettings
       settings={settings}
+      wpPages={wpPages}
+      wpPosts={wpPosts}
       handleInputChange={handleInputChange}
+      setSettings={setSettings}
     />,
     <ScrollSettings
       settings={settings}

@@ -130,9 +130,21 @@ function twsbtt_enqueue_script() {
         wp_enqueue_style( 'twsbtt-plugin-css', plugins_url( 'dist/styles.css', __FILE__ ) );
     }
 
+    $pageArgs = array(
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+    );
+
+    $postArgs = array(
+        'post_type'   => 'post',
+        'post_status' => 'publish',
+    );
+
     wp_localize_script( 'twsbtt-plugin-js', 'backToTopperSettings', array(
         'apiUrl'   => esc_url( rest_url( 'back-to-topper-plugin/v1/settings' ) ),
         'settings' => get_option( 'twsbtt_plugin_settings' ),
+        'pages' => get_pages($pageArgs),
+        'posts' => get_posts($postArgs),
         'nonce'    => wp_create_nonce( 'wp_rest' ),
     ) );
 }
@@ -145,9 +157,16 @@ function twsbtt_enqueue_assets() {
     wp_enqueue_style( 'twsbtt-style', plugins_url( 'public/css/styles.css', __FILE__ ) );
     wp_enqueue_script( 'twsbtt-script', plugins_url( 'public/js/script.js', __FILE__ ), array(), null, true );
 
+    if (is_page() || is_single()) {
+        $activeId = get_queried_object_id();
+    } else {
+        $activeId = '';
+    }
+
     wp_localize_script( 'twsbtt-script', 'backToTopperSettings', array(
         'apiUrl'   => esc_url( rest_url( 'back-to-topper-plugin/v1/settings' ) ),
         'settings' => get_option( 'twsbtt_plugin_settings' ),
+        'activeId' => $activeId,
         'nonce'    => wp_create_nonce( 'wp_rest' ),
     ) );
 }

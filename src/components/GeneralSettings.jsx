@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Select from "react-select";
 import { toast } from "react-toastify";
 import icons from "../icons";
 
@@ -15,8 +16,40 @@ const CheckboxInput = ({ name, label, checked, onChange }) => (
 /**
  * GeneralSettings component for handling general settings
  */
-const GeneralSettings = ({ settings, handleInputChange }) => {
+const GeneralSettings = ({
+  settings,
+  wpPages,
+  wpPosts,
+  handleInputChange,
+  setSettings,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [pages, setPages] = useState([]);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    wpPages.forEach((page) => {
+      setPages((prev) => [...prev, { value: page.ID, label: page.post_title }]);
+    });
+
+    wpPosts.forEach((post) => {
+      setPosts((prev) => [...prev, { value: post.ID, label: post.post_title }]);
+    });
+  }, [wpPages, wpPosts]);
+
+  const handlePageSelectChange = (e) => {
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      excludePages: e,
+    }));
+  };
+
+  const handlePostSelectChange = (e) => {
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      excludePosts: e,
+    }));
+  };
 
   // Handle form submission (save settings)
   const handleSubmit = async (e) => {
@@ -61,7 +94,7 @@ const GeneralSettings = ({ settings, handleInputChange }) => {
         <CheckboxInput
           name="autoHide"
           label="Auto Hide"
-          checked={settings.autoHide || true}
+          checked={settings.autoHide || false}
           onChange={handleInputChange}
         />
         <CheckboxInput
@@ -94,6 +127,32 @@ const GeneralSettings = ({ settings, handleInputChange }) => {
             </label>
           </div>
         ))}
+      </div>
+      <div className="twsbtt-flex twsbtt-items-center twsbtt-gap-5">
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <div className="twsbtt-label">
+            <span className="twsbtt-label-text">Exclude Pages</span>
+          </div>
+          <Select
+            isMulti
+            name="excludePages"
+            options={pages}
+            value={settings.excludePages}
+            onChange={handlePageSelectChange}
+          />
+        </label>
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <div className="twsbtt-label">
+            <span className="twsbtt-label-text">Exclude Posts</span>
+          </div>
+          <Select
+            isMulti
+            name="excludePosts"
+            options={posts}
+            value={settings.excludePosts}
+            onChange={handlePostSelectChange}
+          />
+        </label>
       </div>
       <button
         type="submit"

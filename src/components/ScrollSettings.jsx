@@ -41,7 +41,9 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
       <div className="twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-5">
         <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
           <div className="twsbtt-label">
-            <span className="twsbtt-label-text">Scroll Duration (ms)</span>
+            <span className="twsbtt-label-text">
+              Scroll Duration <small>(ms)</small>
+            </span>
           </div>
           <input
             type="number"
@@ -54,18 +56,24 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
             min="0"
           />
         </label>
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <div className="twsbtt-label">
+            <span className="twsbtt-label-text">
+              Scroll Offset <small>(px)</small>
+            </span>
+          </div>
+          <input
+            type="number"
+            name="scrollOffset"
+            value={settings.scrollOffset || 200}
+            onChange={handleInputChange}
+            placeholder="Scroll Offset (px)"
+            className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
+            aria-label="Scroll Offset"
+            min="0"
+          />
+        </label>
       </div>
-
-      {/* Uncomment this part if needed */}
-      {/* <label className="label cursor-pointer flex gap-2 w-[160px]">
-        <input
-          type="checkbox"
-          name="calculation"
-          checked={settings.calculation || false}
-          onChange={handleInputChange}
-        />
-        <span className="label-text">Calculation Enabled</span>
-      </label> */}
 
       <button
         type="submit"

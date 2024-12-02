@@ -1,14 +1,38 @@
 // Constants for better readability and maintainability
-const SCROLL_THRESHOLD = 200;
 const SMALL_DEVICE_WIDTH = 768;
 
 // Get the scroll-to-top button and settings
 const scrollToTopBtn = document.getElementById("twsbttScrollToTopBtn");
-const { enabled, hideSmallDevice, autoHide, scrollDuration } =
-  backToTopperSettings.settings;
+const {
+  enabled,
+  hideSmallDevice,
+  autoHide,
+  scrollDuration,
+  scrollOffset,
+  excludePages,
+  excludePosts,
+} = backToTopperSettings.settings;
+
+const activeId = backToTopperSettings.activeId;
+
+let disable = false;
+
+excludePages.forEach((page) => {
+  if (page.value.toString() === activeId) {
+    disable = true;
+    return;
+  }
+});
+
+excludePosts.forEach((post) => {
+  if (post.value.toString() === activeId) {
+    disable = true;
+    return;
+  }
+});
 
 // Check if the functionality is enabled
-if (enabled) {
+if (enabled && !disable) {
   // Initialize scroll event listener
   window.onscroll = handleScroll;
 
@@ -46,8 +70,8 @@ function shouldHideButtonOnSmallDevice() {
  */
 function toggleButtonVisibilityBasedOnScroll() {
   const shouldShowButton =
-    document.body.scrollTop > SCROLL_THRESHOLD ||
-    document.documentElement.scrollTop > SCROLL_THRESHOLD;
+    document.body.scrollTop > scrollOffset ||
+    document.documentElement.scrollTop > scrollOffset;
 
   scrollToTopBtn.style.display = shouldShowButton ? "block" : "none";
 }

@@ -46,7 +46,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
       onSubmit={(e) => handleSubmit(e, settings, setIsLoading)}
       className="twsbtt-space-y-5"
     >
-      <div className="twsbtt-grid lg:twsbtt-grid-cols-4 md:twsbtt-grid-cols-2 twsbtt-grid-cols-1 twsbtt-gap-5 twsbtt-flex-wrap">
+      <div className="twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-5 twsbtt-flex-wrap">
         {/* Button Width */}
         <FormField
           name="width"
@@ -156,7 +156,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
  * Reusable form field for number input fields
  */
 const FormField = ({ name, label, value, handleInputChange, placeholder }) => (
-  <label className="twsbtt-form-control twsbtt-w-full">
+  <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
     <div className="twsbtt-label">
       <span className="twsbtt-label-text">
         {label} <small>(px)</small>
