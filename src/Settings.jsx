@@ -28,6 +28,7 @@ const initialSettings = {
   paddingBottom: 10,
   paddingLeft: 10,
   paddingRight: 10,
+  buttonOpacity: 100,
   excludePages: [],
   excludePosts: [],
 };

@@ -112,6 +112,23 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
           handleInputChange={handleInputChange}
           placeholder="Padding Right"
         />
+        <label className="twsbtt-form-control twsbtt-w-full twsbtt-max-w-xs">
+          <div className="twsbtt-label">
+            <span className="twsbtt-label-text">
+              Button Opacity <small>(%)</small>
+            </span>
+          </div>
+          <input
+            type="number"
+            name="buttonOpacity"
+            value={settings.buttonOpacity || 100}
+            onChange={handleInputChange}
+            placeholder="Button Opacity"
+            className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
+            min={0}
+            max={100}
+          />
+        </label>
       </div>
 
       {/* Color Pickers for Icon and Background Colors */}

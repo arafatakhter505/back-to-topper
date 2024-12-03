@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#twsbtt-admin-root .twsbtt-general-settings input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

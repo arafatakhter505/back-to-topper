@@ -211,6 +211,7 @@ function twsbtt_dynamic_style() {
         'paddingBottom'    => 10,
         'paddingLeft'      => 10,
         'paddingRight'     => 10,
+        'buttonOpacity'    => 100
     );
 
     $options = wp_parse_args( $options, $default_options );
@@ -229,6 +230,7 @@ function twsbtt_dynamic_style() {
             padding-bottom: {$options['paddingBottom']}px;
             padding-left: {$options['paddingLeft']}px;
             padding-right: {$options['paddingRight']}px;
+            opacity: {$options['buttonOpacity']}%;
         }
         .twsbtt-scroll-to-top:hover {
             background-color: {$options['hoverBgColor']};

@@ -83,7 +83,10 @@ const GeneralSettings = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="twsbtt-space-y-5">
+    <form
+      onSubmit={handleSubmit}
+      className="twsbtt-space-y-5 twsbtt-general-settings"
+    >
       <div className="twsbtt-form-control twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-5">
         <CheckboxInput
           name="enabled"
