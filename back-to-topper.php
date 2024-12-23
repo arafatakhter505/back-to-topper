@@ -44,6 +44,8 @@ function twsbtt_set_default_settings() {
         'paddingBottom'    => 10,
         'paddingLeft'      => 10,
         'paddingRight'     => 10,
+        'excludePages'     => [],
+        'excludePosts'     => []
     );
 
     // Check if settings already exist, if not, set default settings

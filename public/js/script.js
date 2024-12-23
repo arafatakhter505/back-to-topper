@@ -99,3 +99,5 @@ function scrollToTop() {
   // Start the scroll animation
   requestAnimationFrame(scrollStep);
 }
+
+console.log("Hello Back to topper");
