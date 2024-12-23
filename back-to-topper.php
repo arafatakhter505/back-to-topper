@@ -27,7 +27,7 @@ function twsbtt_set_default_settings() {
         'autoHide'         => true,
         'hideSmallDevice'  => true,
         'scrollDuration'   => 500,
-        'calculation'      => true,
+        'scrollOffset'     => 200,
         'width'            => 50,
         'height'           => 50,
         'borderRadius'     => 15,
@@ -44,6 +44,7 @@ function twsbtt_set_default_settings() {
         'paddingBottom'    => 10,
         'paddingLeft'      => 10,
         'paddingRight'     => 10,
+        'buttonOpacity'    => 100,
         'excludePages'     => [],
         'excludePosts'     => []
     );

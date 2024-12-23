@@ -11,7 +11,6 @@ const initialSettings = {
   hideSmallDevice: true,
   scrollDuration: 500,
   scrollOffset: 200,
-  calculation: true,
   width: 50,
   height: 50,
   borderRadius: 15,
