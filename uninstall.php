@@ -1,17 +1,8 @@
 <?php
-/**
- * Uninstall plugin.
- *
- * Deletes the plugin settings and other data stored by the plugin.
- *
- * @package BackToTopper
- * @since   1.0.0
- */
-
-// If uninstall not called from WordPress exit.
+// Exit if accessed directly.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-    die;
+    exit;
 }
 
-// Delete plugin all settings.
+// Remove options on uninstall.
 delete_option( 'twsbtt_plugin_settings' );
