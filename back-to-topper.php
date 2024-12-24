@@ -39,7 +39,7 @@ function twsbtt_set_default_settings() {
         'left'             => '',
         'right'            => 20,
         'bottom'           => 20,
-        'icon'             => '/public/svg/arrow-15.svg',
+        'icon'             => '/assets/images/arrow-15.svg',
         'paddingTop'       => 10,
         'paddingBottom'    => 10,
         'paddingLeft'      => 10,
@@ -148,8 +148,8 @@ add_action( 'admin_enqueue_scripts', 'twsbtt_enqueue_script' );
  * Enqueue plugin frontend scripts and styles.
  */
 function twsbtt_enqueue_assets() {
-    wp_enqueue_style( 'twsbtt-style', plugins_url( 'public/css/styles.css', __FILE__ ) );
-    wp_enqueue_script( 'twsbtt-script', plugins_url( 'public/js/script.js', __FILE__ ), array(), null, true );
+    wp_enqueue_style( 'twsbtt-style', plugins_url( 'assets/css/styles.css', __FILE__ ) );
+    wp_enqueue_script( 'twsbtt-script', plugins_url( 'assets/js/script.js', __FILE__ ), array(), null, true );
 
     if (is_page() || is_single()) {
         $activeId = get_queried_object_id();
@@ -171,7 +171,7 @@ add_action( 'wp_enqueue_scripts', 'twsbtt_enqueue_assets' );
  */
 function twsbtt_display_scroll_to_top_button() {
     $options = get_option( 'twsbtt_plugin_settings' );
-    $icon = isset( $options['icon'] ) ? $options['icon'] : '/public/svg/arrow-15.svg';
+    $icon = isset( $options['icon'] ) ? $options['icon'] : '/assets/images/arrow-15.svg';
 
     $svg_file_path = plugin_dir_url( __FILE__ ) . $icon;
     $svg_content = file_get_contents( $svg_file_path );

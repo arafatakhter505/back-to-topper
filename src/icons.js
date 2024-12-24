@@ -1,5 +1,5 @@
 // Import React icons dynamically based on a consistent naming pattern
-import * as ArrowIcons from "../public/svg";
+import * as ArrowIcons from "../assets/images";
 
 /**
  * Array of arrow icon components with their corresponding file names.
@@ -11,7 +11,7 @@ const icons = Array.from({ length: 17 }, (_, index) => {
   const IconComponent = ArrowIcons[iconName];
 
   return {
-    src: `/public/svg/arrow-${index + 1}.svg`,
+    src: `/assets/images/arrow-${index + 1}.svg`,
     icon: IconComponent ? <IconComponent /> : null,
   };
 });

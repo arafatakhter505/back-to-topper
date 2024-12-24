@@ -22,7 +22,7 @@ const initialSettings = {
   left: "",
   right: 20,
   bottom: 20,
-  icon: "/public/svg/arrow-15.svg",
+  icon: "/assets/images/arrow-15.svg",
   paddingTop: 10,
   paddingBottom: 10,
   paddingLeft: 10,
