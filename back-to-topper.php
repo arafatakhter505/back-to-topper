@@ -57,15 +57,6 @@ function twsbtt_set_default_settings() {
 register_activation_hook( __FILE__, 'twsbtt_set_default_settings' );
 
 /**
- * Handle plugin uninstallation and update options accordingly.
- */
-function twsbtt_on_plugin_uninstall() {
-    // Optionally, you can reset settings to default or remove the option entirely
-    delete_option( 'twsbtt_plugin_settings' );  // Remove the plugin settings option when uninstalled.
-}
-register_uninstall_hook( __FILE__, 'twsbtt_on_plugin_uninstall' );
-
-/**
  * Register the admin menu for the plugin settings page.
  */
 function twsbtt_customize_panel() {
