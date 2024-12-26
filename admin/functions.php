@@ -26,15 +26,15 @@ function twsbtt_save_settings( $data ) {
         'hoverIconColor'   => sanitize_hex_color( $settings['hoverIconColor'] ),
         'bgColor'          => sanitize_hex_color( $settings['bgColor'] ),
         'hoverBgColor'     => sanitize_hex_color( $settings['hoverBgColor'] ),
-        'left'             => sanitize_text_field( $settings['left'] ),
-        'right'            => absint( $settings['right'] ),
+        'left'             => is_numeric($settings['left']) ? absint($settings['left']) : '',
+        'right'            => is_numeric($settings['right']) ? absint($settings['right']) : '',
         'bottom'           => absint( $settings['bottom'] ),
         'icon'             => esc_url_raw( $settings['icon'] ),
         'paddingTop'       => absint( $settings['paddingTop'] ),
         'paddingBottom'    => absint( $settings['paddingBottom'] ),
         'paddingLeft'      => absint( $settings['paddingLeft'] ),
         'paddingRight'     => absint( $settings['paddingRight'] ),
-        $buttonOpacity = isset($settings['buttonOpacity']) ? absint($settings['buttonOpacity']) : 100,
+        'buttonOpacity' => isset($settings['buttonOpacity']) ? absint($settings['buttonOpacity']) : 100,
         'excludePages'     => array_map(function($page) {
             return [
                 'value' => isset($page['value']) ? absint($page['value']) : 0, 
