@@ -43,7 +43,6 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
       }
     } catch (error) {
       toast.error("An error occurred while saving settings.");
-      console.error("Error during settings save:", error);
     } finally {
       setIsLoading(false);
     }

@@ -76,7 +76,6 @@ const GeneralSettings = ({
       }
     } catch (error) {
       toast.error("An error occurred while saving settings.");
-      console.error("Error during settings save:", error);
     } finally {
       setIsLoading(false);
     }
@@ -160,7 +159,7 @@ const GeneralSettings = ({
       <button
         type="submit"
         className={`twsbtt-btn twsbtt-btn-success twsbtt-text-white twsbtt-w-[100px] twsbtt-btn-sm`}
-        disabled={isLoading} // Disable the button when loading
+        disabled={isLoading}
       >
         {isLoading ? "Saving..." : "Save"}
       </button>

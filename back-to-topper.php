@@ -24,7 +24,16 @@ include_once plugin_dir_path( __FILE__ ) . 'includes/enqueue-assets.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/dynamic-style.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/display-scroll-to-top-button.php';
 
-// Instantiate the plugin settings class.
-new TWSBTT_Settings();
+// Register activation hook and instantiate the class
+register_activation_hook( __FILE__, 'activate_back_to_topper_plugin' );
+
+/**
+ * Function to activate the plugin and set default settings.
+ */
+function activate_back_to_topper_plugin() {
+    // Instantiate the settings class to run the default settings setup
+    $settings_instance = new TWSBTT_Settings();
+    $settings_instance->set_default_settings();
+}
 
 ?>
