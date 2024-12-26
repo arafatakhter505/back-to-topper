@@ -50,7 +50,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
         <FormField
           name="width"
           label="Button Width"
-          value={settings.width || 50}
+          value={settings.width}
           handleInputChange={handleInputChange}
           placeholder="Button Width"
         />
@@ -59,7 +59,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
         <FormField
           name="height"
           label="Button Height"
-          value={settings.height || 50}
+          value={settings.height}
           handleInputChange={handleInputChange}
           placeholder="Button Height"
         />
@@ -68,7 +68,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
         <FormField
           name="borderRadius"
           label="Border Radius"
-          value={settings.borderRadius || 15}
+          value={settings.borderRadius}
           handleInputChange={handleInputChange}
           placeholder="Border Radius"
         />
@@ -77,7 +77,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
         <FormField
           name="hoverBorderRadius"
           label="Hover Border Radius"
-          value={settings.hoverBorderRadius || 5}
+          value={settings.hoverBorderRadius}
           handleInputChange={handleInputChange}
           placeholder="Hover Border Radius"
         />
@@ -86,28 +86,28 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
         <FormField
           name="paddingTop"
           label="Padding Top"
-          value={settings.paddingTop || 10}
+          value={settings.paddingTop}
           handleInputChange={handleInputChange}
           placeholder="Padding Top"
         />
         <FormField
           name="paddingBottom"
           label="Padding Bottom"
-          value={settings.paddingBottom || 10}
+          value={settings.paddingBottom}
           handleInputChange={handleInputChange}
           placeholder="Padding Bottom"
         />
         <FormField
           name="paddingLeft"
           label="Padding Left"
-          value={settings.paddingLeft || 10}
+          value={settings.paddingLeft}
           handleInputChange={handleInputChange}
           placeholder="Padding Left"
         />
         <FormField
           name="paddingRight"
           label="Padding Right"
-          value={settings.paddingRight || 10}
+          value={settings.paddingRight}
           handleInputChange={handleInputChange}
           placeholder="Padding Right"
         />
@@ -120,7 +120,7 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
           <input
             type="number"
             name="buttonOpacity"
-            value={settings.buttonOpacity || 100}
+            value={settings.buttonOpacity}
             onChange={handleInputChange}
             placeholder="Button Opacity"
             className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"

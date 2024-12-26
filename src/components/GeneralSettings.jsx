@@ -90,19 +90,19 @@ const GeneralSettings = ({
         <CheckboxInput
           name="enabled"
           label="Enabled"
-          checked={settings.enabled || false}
+          checked={settings.enabled}
           onChange={handleInputChange}
         />
         <CheckboxInput
           name="autoHide"
           label="Auto Hide"
-          checked={settings.autoHide || false}
+          checked={settings.autoHide}
           onChange={handleInputChange}
         />
         <CheckboxInput
           name="hideSmallDevice"
           label="Hide On Small Device"
-          checked={settings.hideSmallDevice || false}
+          checked={settings.hideSmallDevice}
           onChange={handleInputChange}
         />
       </div>

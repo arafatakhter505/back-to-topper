@@ -34,7 +34,7 @@ function twsbtt_save_settings( $data ) {
         'paddingBottom'    => absint( $settings['paddingBottom'] ),
         'paddingLeft'      => absint( $settings['paddingLeft'] ),
         'paddingRight'     => absint( $settings['paddingRight'] ),
-        'buttonOpacity'    => absint( $settings['buttonOpacity'] ),
+        $buttonOpacity = isset($settings['buttonOpacity']) ? absint($settings['buttonOpacity']) : 100,
         'excludePages'     => array_map(function($page) {
             return [
                 'value' => isset($page['value']) ? absint($page['value']) : 0, 

@@ -47,7 +47,7 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
           <input
             type="number"
             name="scrollDuration"
-            value={settings.scrollDuration || 0}
+            value={settings.scrollDuration}
             onChange={handleInputChange}
             placeholder="Scroll Duration (ms)"
             className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
@@ -64,7 +64,7 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
           <input
             type="number"
             name="scrollOffset"
-            value={settings.scrollOffset || 200}
+            value={settings.scrollOffset}
             onChange={handleInputChange}
             placeholder="Scroll Offset (px)"
             className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-max-w-xs twsbtt-input-sm"
@@ -77,7 +77,7 @@ const ScrollSettings = ({ settings, handleInputChange }) => {
       <button
         type="submit"
         className={`twsbtt-btn twsbtt-btn-success twsbtt-text-white twsbtt-w-[100px] twsbtt-btn-sm`}
-        disabled={isLoading} // Disable the button when loading
+        disabled={isLoading}
       >
         {isLoading ? "Saving..." : "Save"}
       </button>

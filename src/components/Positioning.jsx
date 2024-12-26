@@ -74,7 +74,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
             <input
               type="number"
               name="right"
-              value={settings.right || 20}
+              value={settings.right}
               onChange={handleInputChange}
               placeholder="Right"
               className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
@@ -90,7 +90,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
             <input
               type="number"
               name="left"
-              value={settings.left || 20}
+              value={settings.left}
               onChange={handleInputChange}
               placeholder="Left"
               className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
@@ -107,7 +107,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
           <input
             type="number"
             name="bottom"
-            value={settings.bottom || 20}
+            value={settings.bottom}
             onChange={handleInputChange}
             placeholder="Bottom"
             className="twsbtt-input twsbtt-input-bordered twsbtt-w-full twsbtt-input-sm"
@@ -117,7 +117,7 @@ const Positioning = ({ settings, handleInputChange, setSettings }) => {
       <button
         type="submit"
         className={`twsbtt-btn twsbtt-btn-success twsbtt-text-white twsbtt-w-[100px] twsbtt-btn-sm`}
-        disabled={isLoading} // Disable the button when loading
+        disabled={isLoading}
       >
         {isLoading ? "Saving..." : "Save"}
       </button>
