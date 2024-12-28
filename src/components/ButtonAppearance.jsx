@@ -153,7 +153,13 @@ const ButtonAppearance = ({ settings, handleInputChange }) => {
         <ColorPicker
           name="hoverBgColor"
           label="Hover Background Color"
-          value={settings.hoverBgColor || "#000"}
+          value={settings.hoverBgColor || "#000000"}
+          handleInputChange={handleInputChange}
+        />
+        <ColorPicker
+          name="progressColor"
+          label="Progress Color"
+          value={settings.progressColor || "#454545"}
           handleInputChange={handleInputChange}
         />
       </div>

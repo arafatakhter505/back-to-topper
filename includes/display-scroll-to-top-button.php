@@ -13,7 +13,7 @@ function twsbtt_display_scroll_to_top_button() {
 
     // Display the button with SVG icon
     if ( false !== $svg_content ) {
-        echo '<button id="twsbttScrollToTopBtn" class="twsbtt-scroll-to-top">' . $svg_content . '</button>';
+        echo '<div id="twsbttScrollToTopBtnProgress" class="twsbtt-scroll-to-top-progress"><button id="twsbttScrollToTopBtn" class="twsbtt-scroll-to-top">' . $svg_content . '</button></div>';
     }
 }
 add_action( 'wp_footer', 'twsbtt_display_scroll_to_top_button' );

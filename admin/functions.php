@@ -26,6 +26,7 @@ function twsbtt_save_settings( $data ) {
         'hoverIconColor'   => sanitize_hex_color( $settings['hoverIconColor'] ),
         'bgColor'          => sanitize_hex_color( $settings['bgColor'] ),
         'hoverBgColor'     => sanitize_hex_color( $settings['hoverBgColor'] ),
+        'progressColor'     => sanitize_hex_color( $settings['progressColor'] ),
         'left'             => is_numeric($settings['left']) ? absint($settings['left']) : '',
         'right'            => is_numeric($settings['right']) ? absint($settings['right']) : '',
         'bottom'           => absint( $settings['bottom'] ),

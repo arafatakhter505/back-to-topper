@@ -3,6 +3,9 @@ const SMALL_DEVICE_WIDTH = 768;
 
 // Get the scroll-to-top button and settings
 const scrollToTopBtn = document.getElementById("twsbttScrollToTopBtn");
+const scrollToTopBtnProgress = document.getElementById(
+  "twsbttScrollToTopBtnProgress"
+);
 const {
   enabled,
   hideSmallDevice,
@@ -11,6 +14,7 @@ const {
   scrollOffset,
   excludePages,
   excludePosts,
+  progressColor,
 } = backToTopperSettings.settings;
 
 const activeId = backToTopperSettings.activeId;
@@ -34,26 +38,31 @@ excludePosts.forEach((post) => {
 // Check if the functionality is enabled
 if (enabled && !disable) {
   // Initialize scroll event listener
-  window.onscroll = handleScroll;
+  window.addEventListener("scroll", handleScroll);
 
   // Initialize click event listener
   scrollToTopBtn.addEventListener("click", scrollToTop);
 }
 
 /**
- * Handle the scroll event to toggle the visibility of the button.
+ * Handle the scroll event to toggle the visibility of the button and update progress.
  */
 function handleScroll() {
   // If the device is small and hideSmallDevice is enabled, hide the button
   if (shouldHideButtonOnSmallDevice()) {
+    scrollToTopBtnProgress.style.display = "none";
     scrollToTopBtn.style.display = "none";
     return;
   }
+
+  // Update progress indicator
+  calcScrollValue();
 
   // Show or hide the button based on scroll position and settings
   if (autoHide) {
     toggleButtonVisibilityBasedOnScroll();
   } else {
+    scrollToTopBtnProgress.style.display = "flex";
     scrollToTopBtn.style.display = "block";
   }
 }
@@ -74,6 +83,20 @@ function toggleButtonVisibilityBasedOnScroll() {
     document.documentElement.scrollTop > scrollOffset;
 
   scrollToTopBtn.style.display = shouldShowButton ? "block" : "none";
+  scrollToTopBtnProgress.style.display = shouldShowButton ? "flex" : "none";
+}
+
+/**
+ * Calculate the progress of scrolling for the scroll-to-top button.
+ */
+function calcScrollValue() {
+  let pos = document.documentElement.scrollTop || document.body.scrollTop;
+  let calcHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  let scrollValue = Math.round((pos * 100) / calcHeight);
+
+  scrollToTopBtnProgress.style.background = `conic-gradient(${progressColor} ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
 }
 
 /**

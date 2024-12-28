@@ -1,10 +1,10 @@
 .twsbtt-scroll-to-top {
-  position: fixed;
-  display: none;
+  display: block;
   cursor: pointer;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
   border: 0;
   border-radius: 5px;
-  z-index: 1000;
   background-color: #000;
   color: #fff;
   -webkit-transition: background-color 0.3s ease, color 0.3s ease,
@@ -17,5 +17,24 @@
     border-radius 0.3s ease; /* Standard */
   -webkit-border-radius: 5px; /* Safari/Chrome */
   -moz-border-radius: 5px; /* Firefox */
-  border-radius: 5px; /* Standard */
+}
+
+.twsbtt-scroll-to-top-progress {
+  position: fixed;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease,
+    border-radius 0.3s ease; /* Safari/Chrome */
+  -moz-transition: background-color 0.3s ease, color 0.3s ease,
+    border-radius 0.3s ease; /* Firefox */
+  -o-transition: background-color 0.3s ease, color 0.3s ease,
+    border-radius 0.3s ease; /* Opera */
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-radius 0.3s ease; /* Standard */
+  -webkit-border-radius: 5px; /* Safari/Chrome */
+  -moz-border-radius: 5px; /* Firefox */
 }

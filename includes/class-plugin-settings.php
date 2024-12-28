@@ -47,6 +47,7 @@ class TWSBTT_Settings {
             'hoverIconColor'   => '#ffffff',
             'bgColor'          => '#004CFF',
             'hoverBgColor'     => '#000000',
+            'progressColor'     => '#454545',
             'left'             => '',
             'right'            => 20,
             'bottom'           => 20,

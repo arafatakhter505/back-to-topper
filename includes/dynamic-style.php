@@ -10,6 +10,7 @@ function twsbtt_dynamic_style() {
         'hoverIconColor'   => '#ffffff',
         'bgColor'          => '#004CFF',
         'hoverBgColor'     => '#000000',
+        'progressColor'   => '#454545',
         'left'             => null,
         'right'            => 20,
         'bottom'           => 20,
@@ -29,11 +30,6 @@ function twsbtt_dynamic_style() {
         .twsbtt-scroll-to-top {
             background-color: {$options['bgColor']};
             font-size: 20px;
-            left: {$options['left']}px;
-            right: {$options['right']}px;
-            bottom: {$options['bottom']}px;
-            width: {$options['width']}px;
-            height: {$options['height']}px;
             border-radius: {$options['borderRadius']}px;
             padding-top: {$options['paddingTop']}px;
             padding-bottom: {$options['paddingBottom']}px;
@@ -41,15 +37,27 @@ function twsbtt_dynamic_style() {
             padding-right: {$options['paddingRight']}px;
             opacity: {$options['buttonOpacity']}%;
         }
-        .twsbtt-scroll-to-top:hover {
-            background-color: {$options['hoverBgColor']};
-            border-radius: {$options['hoverBorderRadius']}px;
-        }
         .twsbtt-scroll-to-top svg {
             fill: {$options['iconColor']};
         }
-        .twsbtt-scroll-to-top:hover svg {
+        .twsbtt-scroll-to-top-progress:hover .twsbtt-scroll-to-top svg {
             fill: {$options['hoverIconColor']};
+        }
+        .twsbtt-scroll-to-top-progress {    
+            left: {$options['left']}px;
+            right: {$options['right']}px;
+            bottom: {$options['bottom']}px;
+            width: {$options['width']}px;
+            height: {$options['height']}px;
+            opacity: {$options['buttonOpacity']}%;
+            border-radius: {$options['hoverBorderRadius']}px;
+        }
+        .twsbtt-scroll-to-top-progress:hover {
+            border-radius: {$options['hoverBorderRadius']}px;
+        }
+        .twsbtt-scroll-to-top-progress:hover .twsbtt-scroll-to-top {
+            background-color: {$options['hoverBgColor']};
+            border-radius: {$options['hoverBorderRadius']}px;
         }
     </style>";
 }
