@@ -50,7 +50,7 @@ function twsbtt_dynamic_style() {
             width: {$options['width']}px;
             height: {$options['height']}px;
             opacity: {$options['buttonOpacity']}%;
-            border-radius: {$options['hoverBorderRadius']}px;
+            border-radius: {$options['borderRadius']}px;
         }
         .twsbtt-scroll-to-top-progress:hover {
             border-radius: {$options['hoverBorderRadius']}px;
