@@ -57,11 +57,10 @@ class BackToTopper {
      * Initialize all plugin components.
      */
     private function initialize_components() {
-        new TWSBTT_BackToTopperAdmin();
-        // new TWSBTT_Settings();
-        // new TWSBTT_Enqueue_Assets();
-        // new TWSBTT_Dynamic_Style();
-        // new TWSBTT_Display_Scroll_To_Top_Button();
+        new TWSBTT_Back_To_Topper_Admin();
+        new TWSBTT_Display_Scroll_To_Top_Button();
+        new TWSBTT_Dynamic_Style();
+        new TWSBTT_Enqueue_Assets();
     }
 
     /**

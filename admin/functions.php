@@ -1,14 +1,14 @@
 <?php
 
-class TWSBTT_BackToTopperAdmin {
-     /**
+class TWSBTT_Back_To_Topper_Admin {
+    /**
      * Initialize hooks and actions for the admin functionality.
      */
     public function __construct() {
-        add_action( 'rest_api_init', [$this, 'twsbtt_register_rest_route'] );
-        add_action( 'admin_enqueue_scripts', [$this,'twsbtt_enqueue_admin_scripts'] );
-        add_action( 'admin_menu', [$this,'twsbtt_customize_panel']);
-        add_filter('admin_body_class', [$this,'twsbtt_admin_body_class']);
+        add_action( 'rest_api_init', [ $this, 'twsbtt_register_rest_route' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'twsbtt_enqueue_admin_scripts' ] );
+        add_action( 'admin_menu', [ $this, 'twsbtt_customize_panel' ] );
+        add_filter( 'admin_body_class', [ $this, 'twsbtt_admin_body_class' ] );
     }
 
     /**
@@ -17,26 +17,30 @@ class TWSBTT_BackToTopperAdmin {
      * @param string $classes The existing classes on the admin body element.
      * @return string The modified classes.
      */
-    public function twsbtt_admin_body_class($classes) {
-        if ( isset($_GET['page']) && $_GET['page'] === 'back-to-topper-customize-panel' ) {
+    public function twsbtt_admin_body_class( $classes ) {
+        if ( isset( $_GET['page'] ) && $_GET['page'] === 'back-to-topper-customize-panel' ) {
             $classes .= ' back-to-topper-customize-panel-page';
         }
+
         return $classes;
     }
-    
 
     /**
      * Register the REST route for saving settings.
      */
     public function twsbtt_register_rest_route() {
-        register_rest_route( 'back-to-topper-plugin/v1', '/settings', [
-            'methods'             => 'POST',
-            'callback'            => [$this, 'twsbtt_save_settings'],
-            'permission_callback' => [$this, 'twsbtt_permission_callback'],
-        ] );
+        register_rest_route(
+            'back-to-topper-plugin/v1',
+            '/settings',
+            [
+                'methods'             => 'POST',
+                'callback'            => [ $this, 'twsbtt_save_settings' ],
+                'permission_callback' => [ $this, 'twsbtt_permission_callback' ],
+            ]
+        );
     }
 
-     /**
+    /**
      * Save plugin settings via REST API.
      *
      * @param WP_REST_Request $data
@@ -44,7 +48,7 @@ class TWSBTT_BackToTopperAdmin {
      */
     public function twsbtt_save_settings( $data ) {
         $settings = $data->get_params();
-    
+
         $sanitized_settings = [
             'enabled'          => filter_var( $settings['enabled'], FILTER_VALIDATE_BOOLEAN ),
             'autoHide'         => filter_var( $settings['autoHide'], FILTER_VALIDATE_BOOLEAN ),
@@ -82,7 +86,7 @@ class TWSBTT_BackToTopperAdmin {
                 ];
             }, (array) $settings['excludePosts']),
         ];
-    
+
         // Validate that all required settings are present
         $required_settings = [ 'enabled', 'scrollDuration', 'scrollOffset', 'width', 'height' ];
         foreach ( $required_settings as $setting ) {
@@ -90,15 +94,15 @@ class TWSBTT_BackToTopperAdmin {
                 return new \WP_REST_Response( 'Missing required settings.', 400 );
             }
         }
-    
+
         // Validate values are within reasonable ranges
         if ( $sanitized_settings['width'] < 10 || $sanitized_settings['width'] > 200 ) {
             return new WP_REST_Response( 'Width must be between 10 and 200.', 400 );
         }
-    
+
         // Save sanitized settings
         update_option( 'twsbtt_plugin_settings', $sanitized_settings );
-    
+
         return new WP_REST_Response( 'Settings saved successfully.', 200 );
     }
 
@@ -118,7 +122,7 @@ class TWSBTT_BackToTopperAdmin {
         if ( isset( $_GET['page'] ) && $_GET['page'] === 'back-to-topper-customize-panel' ) {
             wp_enqueue_style( 'twsbtt-plugin-css', plugins_url( 'assets/css/admin-style.css', __FILE__ ), array(), '1.0' );
             wp_enqueue_script( 'twsbtt-plugin-js', plugins_url( 'assets/js/admin-script.js', __FILE__ ), array( 'wp-element' ), '1.0', true );
-            
+
             wp_localize_script( 'twsbtt-plugin-js', 'backToTopperSettings', array(
                 'apiUrl'   => esc_url( rest_url( 'back-to-topper-plugin/v1/settings' ) ),
                 'settings' => get_option( 'twsbtt_plugin_settings' ),
@@ -154,4 +158,4 @@ class TWSBTT_BackToTopperAdmin {
     }
 }
 
-
+?>
