@@ -24,16 +24,57 @@ include_once plugin_dir_path( __FILE__ ) . 'includes/enqueue-assets.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/dynamic-style.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/display-scroll-to-top-button.php';
 
-// Register activation hook and instantiate the class
-register_activation_hook( __FILE__, 'activate_back_to_topper_plugin' );
+
+// // Register activation hook and instantiate the class
+// register_activation_hook( __FILE__, 'activate_back_to_topper_plugin' );
+
+// /**
+//  * Function to activate the plugin and set default settings.
+//  */
+// function activate_back_to_topper_plugin() {
+//     // Instantiate the settings class to run the default settings setup
+//     $settings_instance = new TWSBTT_Settings();
+//     $settings_instance->set_default_settings();
+// }
 
 /**
- * Function to activate the plugin and set default settings.
+ * Main class for the Back To Topper plugin.
  */
-function activate_back_to_topper_plugin() {
-    // Instantiate the settings class to run the default settings setup
-    $settings_instance = new TWSBTT_Settings();
-    $settings_instance->set_default_settings();
+class BackToTopper {
+
+    /**
+     * Constructor to initialize plugin components.
+     */
+    public function __construct() {
+        // Set up activation hook
+        register_activation_hook( __FILE__, array( $this, 'activate_plugin' ) );
+        
+        // Initialize plugin components
+        $this->initialize_components();
+    }
+
+    /**
+     * Initialize all plugin components.
+     */
+    private function initialize_components() {
+        new TWSBTT_BackToTopperAdmin();
+        // new TWSBTT_Settings();
+        // new TWSBTT_Enqueue_Assets();
+        // new TWSBTT_Dynamic_Style();
+        // new TWSBTT_Display_Scroll_To_Top_Button();
+    }
+
+    /**
+     * Plugin activation function.
+     */
+    public function activate_plugin() {
+        // Set default settings on plugin activation
+        $settings_instance = new TWSBTT_Settings();
+        $settings_instance->set_default_settings();
+    }
 }
+
+// Initialize the plugin
+$back_to_topper = new BackToTopper();
 
 ?>
