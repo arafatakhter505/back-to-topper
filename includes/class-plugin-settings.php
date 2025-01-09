@@ -1,16 +1,18 @@
 <?php
 
+namespace TechwaveSolutions\BackToTopper\Settings;
+
 /**
  * Class to handle plugin settings.
  */
-class TWSBTT_Settings {
+class Settings {
 
     /**
      * Constructor to initialize hooks.
      */
     public function __construct() {
         // Hook for plugin activation
-        add_action( 'plugin_activation_hook', [ $this, 'set_default_settings' ] );
+        add_action( 'plugin_activation_hook', [ $this, 'setDefaultSettings' ] );
     }
 
     /**
@@ -18,8 +20,8 @@ class TWSBTT_Settings {
      *
      * @return void
      */
-    public function set_default_settings() {
-        $default_settings = $this->get_default_settings();
+    public function setDefaultSettings() {
+        $default_settings = $this->getDefaultSettings();
 
         // Check if settings exist, otherwise set defaults
         if ( false === get_option( 'twsbtt_plugin_settings' ) ) {
@@ -32,7 +34,7 @@ class TWSBTT_Settings {
      *
      * @return array
      */
-    private function get_default_settings() {
+    private function getDefaultSettings() {
         return [
             'enabled'          => true,
             'autoHide'         => true,

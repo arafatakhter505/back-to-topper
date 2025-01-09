@@ -1,14 +1,16 @@
 <?php
 
-class TWSBTT_Back_To_Topper_Admin {
+namespace TechwaveSolutions\BackToTopper\Admin;
+
+class BackToTopperAdmin {
     /**
      * Initialize hooks and actions for the admin functionality.
      */
     public function __construct() {
-        add_action( 'rest_api_init', [ $this, 'twsbtt_register_rest_route' ] );
-        add_action( 'admin_enqueue_scripts', [ $this, 'twsbtt_enqueue_admin_scripts' ] );
-        add_action( 'admin_menu', [ $this, 'twsbtt_customize_panel' ] );
-        add_filter( 'admin_body_class', [ $this, 'twsbtt_admin_body_class' ] );
+        add_action( 'rest_api_init', [ $this, 'registerRestRoute' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'enqueueAdminScripts' ] );
+        add_action( 'admin_menu', [ $this, 'customizePanel' ] );
+        add_filter( 'admin_body_class', [ $this, 'adminBodyClass' ] );
     }
 
     /**
@@ -17,7 +19,7 @@ class TWSBTT_Back_To_Topper_Admin {
      * @param string $classes The existing classes on the admin body element.
      * @return string The modified classes.
      */
-    public function twsbtt_admin_body_class( $classes ) {
+    public function adminBodyClass( $classes ) {
         if ( isset( $_GET['page'] ) && $_GET['page'] === 'back-to-topper-customize-panel' ) {
             $classes .= ' back-to-topper-customize-panel-page';
         }
@@ -28,14 +30,14 @@ class TWSBTT_Back_To_Topper_Admin {
     /**
      * Register the REST route for saving settings.
      */
-    public function twsbtt_register_rest_route() {
+    public function registerRestRoute() {
         register_rest_route(
             'back-to-topper-plugin/v1',
             '/settings',
             [
                 'methods'             => 'POST',
-                'callback'            => [ $this, 'twsbtt_save_settings' ],
-                'permission_callback' => [ $this, 'twsbtt_permission_callback' ],
+                'callback'            => [ $this, 'saveSettings' ],
+                'permission_callback' => [ $this, 'permissionCallBack' ],
             ]
         );
     }
@@ -46,7 +48,7 @@ class TWSBTT_Back_To_Topper_Admin {
      * @param WP_REST_Request $data
      * @return WP_REST_Response
      */
-    public function twsbtt_save_settings( $data ) {
+    public function saveSettings( $data ) {
         $settings = $data->get_params();
 
         $sanitized_settings = [
@@ -111,14 +113,14 @@ class TWSBTT_Back_To_Topper_Admin {
      *
      * @return bool
      */
-    public function twsbtt_permission_callback() {
+    public function permissionCallBack() {
         return current_user_can( 'manage_options' );
     }
 
     /**
      * Enqueue admin scripts and localize data.
      */
-    public function twsbtt_enqueue_admin_scripts() {
+    public function enqueueAdminScripts() {
         if ( isset( $_GET['page'] ) && $_GET['page'] === 'back-to-topper-customize-panel' ) {
             wp_enqueue_style( 'twsbtt-plugin-css', plugins_url( 'assets/css/admin-style.css', __FILE__ ), array(), '1.0' );
             wp_enqueue_script( 'twsbtt-plugin-js', plugins_url( 'assets/js/admin-script.js', __FILE__ ), array( 'wp-element' ), '1.0', true );
@@ -136,7 +138,7 @@ class TWSBTT_Back_To_Topper_Admin {
     /**
      * Add the plugin's customize panel to the admin menu.
      */
-    public function twsbtt_customize_panel() {
+    public function customizePanel() {
         $icon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE4LjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMTU1LjEzOSAxNTUuMTM5IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNTUuMTM5IDE1NS4xMzk7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxnPg0KCQk8cGF0aCBkPSJNMTE0LjU4OCw0NS40MmgyOC4xN0w5Ny4zMzgsMGwtNDUuNDIsNDUuNDJoMjguNTE2Qzc2LjQsOTguOTM3LDQ4LjUyOSwxNDIuMTczLDEyLjM4MSwxNTIuNjg2DQoJCQljNS41MTMsMS42MDUsMTEuMjI0LDIuNDUyLDE3LjA3MSwyLjQ1MkM3My42MDEsMTU1LjEzOSwxMDkuOTQsMTA3LjExMSwxMTQuNTg4LDQ1LjQyeiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K';
     
         add_menu_page(
@@ -144,7 +146,7 @@ class TWSBTT_Back_To_Topper_Admin {
             esc_html__( 'Back To Topper', 'back-to-topper' ),
             'manage_options',
             'back-to-topper-customize-panel',
-            [$this, 'twsbtt_admin_page'],
+            [$this, 'adminPage'],
             $icon,
             5
         );
@@ -153,9 +155,10 @@ class TWSBTT_Back_To_Topper_Admin {
      /**
      * Render the admin page content.
      */
-    public function twsbtt_admin_page() {
+    public function adminPage() {
         echo '<div id="twsbtt-admin-root" class="wrap"></div>';
     }
 }
 
 ?>
+

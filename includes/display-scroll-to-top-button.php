@@ -1,21 +1,23 @@
 <?php
 
+namespace TechwaveSolutions\BackToTopper\BackToTopButton;
+
 /**
- * Class TWSBTT_Display_Scroll_To_Top_Button
+ * Class DisplayScrollToTopButton
  */
-class TWSBTT_Display_Scroll_To_Top_Button {
+class DisplayScrollToTopButton {
 
     /**
-     * TWSBTT_Display_Scroll_To_Top_Button constructor.
+     * DisplayScrollToTopButton constructor.
      */
     public function __construct() {
-        add_action( 'wp_footer', [ $this, 'twsbtt_display_scroll_to_top_button' ] );
+        add_action( 'wp_footer', [ $this, 'displayScrollToTopButton' ] );
     }
 
     /**
      * Display the "Scroll to Top" button.
      */
-    public function twsbtt_display_scroll_to_top_button() {
+    public function displayScrollToTopButton() {
         $options          = get_option( 'twsbtt_plugin_settings' );
         $icon             = $options['icon'] ?? '/assets/images/arrow-15.svg';
         $svg_file_path    = plugin_dir_url( dirname( __FILE__ ) ) . $icon;

@@ -63,7 +63,7 @@ const GeneralSettings = ({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-WP-Nonce": nonce, // Add nonce to the request for authentication
+          "X-WP-Nonce": nonce,
         },
         body: JSON.stringify(settings),
       });

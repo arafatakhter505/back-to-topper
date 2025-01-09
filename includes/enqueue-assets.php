@@ -1,21 +1,23 @@
 <?php
 
+namespace TechwaveSolutions\BackToTopper\EnqueueAssets;
+
 /**
- * Class TWSBTT_Enqueue_Assets
+ * Class EnqueueAssets
  */
-class TWSBTT_Enqueue_Assets {
+class EnqueueAssets {
 
     /**
-     * TWSBTT_Enqueue_Assets constructor.
+     * EnqueueAssets constructor.
      */
     public function __construct() {
-        add_action( 'wp_enqueue_scripts', [ $this, 'twsbtt_enqueue_assets' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'enqueueAssets' ] );
     }
 
     /**
      * Enqueue frontend assets.
      */
-    public function twsbtt_enqueue_assets() {
+    public function enqueueAssets() {
         // Enqueue stylesheet
         wp_enqueue_style(
             'twsbtt-style',

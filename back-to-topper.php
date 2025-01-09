@@ -12,6 +12,14 @@
  * Domain Path: /languages
  */
 
+namespace TechwaveSolutions\BackToTopper;
+
+use TechwaveSolutions\BackToTopper\Admin\BackToTopperAdmin;
+use TechwaveSolutions\BackToTopper\Settings\Settings;
+use TechwaveSolutions\BackToTopper\BackToTopButton\DisplayScrollToTopButton;
+use TechwaveSolutions\BackToTopper\DynamicStyle\DynamicStyle;
+use TechwaveSolutions\BackToTopper\EnqueueAssets\EnqueueAssets;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -25,18 +33,6 @@ include_once plugin_dir_path( __FILE__ ) . 'includes/dynamic-style.php';
 include_once plugin_dir_path( __FILE__ ) . 'includes/display-scroll-to-top-button.php';
 
 
-// // Register activation hook and instantiate the class
-// register_activation_hook( __FILE__, 'activate_back_to_topper_plugin' );
-
-// /**
-//  * Function to activate the plugin and set default settings.
-//  */
-// function activate_back_to_topper_plugin() {
-//     // Instantiate the settings class to run the default settings setup
-//     $settings_instance = new TWSBTT_Settings();
-//     $settings_instance->set_default_settings();
-// }
-
 /**
  * Main class for the Back To Topper plugin.
  */
@@ -47,33 +43,33 @@ class BackToTopper {
      */
     public function __construct() {
         // Set up activation hook
-        register_activation_hook( __FILE__, array( $this, 'activate_plugin' ) );
+        register_activation_hook( __FILE__, array( $this, 'activatePlugin' ) );
         
         // Initialize plugin components
-        $this->initialize_components();
+        $this->initializeComponents();
     }
 
     /**
      * Initialize all plugin components.
      */
-    private function initialize_components() {
-        new TWSBTT_Back_To_Topper_Admin();
-        new TWSBTT_Display_Scroll_To_Top_Button();
-        new TWSBTT_Dynamic_Style();
-        new TWSBTT_Enqueue_Assets();
+    private function initializeComponents() {
+        new BackToTopperAdmin();
+        new DisplayScrollToTopButton();
+        new DynamicStyle();
+        new EnqueueAssets();
     }
 
     /**
      * Plugin activation function.
      */
-    public function activate_plugin() {
+    public function activatePlugin() {
         // Set default settings on plugin activation
-        $settings_instance = new TWSBTT_Settings();
-        $settings_instance->set_default_settings();
+        $settingsInstance = new Settings();
+        $settingsInstance->setDefaultSettings();
     }
 }
 
 // Initialize the plugin
-$back_to_topper = new BackToTopper();
+new BackToTopper();
 
 ?>

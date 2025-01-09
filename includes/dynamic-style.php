@@ -1,14 +1,16 @@
 <?php
 
-class TWSBTT_Dynamic_Style {
+namespace TechwaveSolutions\BackToTopper\DynamicStyle;
+
+class DynamicStyle {
     public function __construct() {
-        add_action( 'wp_head', [ $this, 'twsbtt_dynamic_style' ] );
+        add_action( 'wp_head', [ $this, 'dynamicStyle' ] );
     }
 
     /**
      * Add dynamic styles to the page.
      */
-    public function twsbtt_dynamic_style() {
+    public function dynamicStyle() {
         $options = get_option( 'twsbtt_plugin_settings' );
         $options = wp_parse_args( $options, [
             'iconColor'        => '#ffffff',
