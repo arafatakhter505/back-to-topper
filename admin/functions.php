@@ -105,7 +105,7 @@ class BackToTopperAdmin {
         // Save sanitized settings
         update_option( 'twsbtt_plugin_settings', $sanitized_settings );
 
-        return new WP_REST_Response( 'Settings saved successfully.', 200 );
+        return new \WP_REST_Response( 'Settings saved successfully.', 200 );
     }
 
     /**
@@ -123,6 +123,7 @@ class BackToTopperAdmin {
     public function enqueueAdminScripts() {
         if ( isset( $_GET['page'] ) && $_GET['page'] === 'back-to-topper-customize-panel' ) {
             wp_enqueue_style( 'twsbtt-plugin-css', plugins_url( 'assets/css/admin-style.css', __FILE__ ), array(), '1.0' );
+            wp_enqueue_style( 'twsbtt-plugin-panel-css', plugins_url( 'assets/js/assets/index-04a72485.css', __FILE__ ), array(), '1.0' );
             wp_enqueue_script( 'twsbtt-plugin-js', plugins_url( 'assets/js/admin-script.js', __FILE__ ), array( 'wp-element' ), '1.0', true );
 
             wp_localize_script( 'twsbtt-plugin-js', 'backToTopperSettings', array(

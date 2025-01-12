@@ -108,7 +108,7 @@ const GeneralSettings = ({
       </div>
 
       <div className="twsbtt-flex twsbtt-flex-row twsbtt-items-center twsbtt-gap-8 twsbtt-flex-wrap">
-        {icons.map((item) => (
+        {icons?.map((item) => (
           <div
             key={item.src}
             className="twsbtt-flex twsbtt-items-center twsbtt-gap-2"

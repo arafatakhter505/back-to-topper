@@ -16,7 +16,11 @@ const rootElement = document.getElementById("twsbtt-admin-root");
 
 // Ensure the root element exists before rendering
 if (rootElement) {
-  createRoot(rootElement).render(<App />);
+  try {
+    createRoot(rootElement).render(<App />);
+  } catch (error) {
+    console.error("Error rendering App component:", error);
+  }
 } else {
   console.error("Root element not found");
 }
