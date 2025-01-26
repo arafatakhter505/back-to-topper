@@ -14,9 +14,9 @@ class DynamicStyle {
         $options = get_option( 'twsbtt_plugin_settings' );
         $options = wp_parse_args( $options, [
             'iconColor'        => '#ffffff',
-            'hoverIconColor'   => '#ffffff',
-            'bgColor'          => '#004CFF',
-            'hoverBgColor'     => '#000000',
+            'hoverIconColor'   => '#000000',
+            'bgColor'          => '#000000',
+            'hoverBgColor'     => '#ffffff',
             'progressColor'    => '#454545',
             'left'             => null,
             'right'            => 20,

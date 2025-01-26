@@ -1,12 +1,12 @@
 .twsbtt-scroll-to-top {
   display: block;
   cursor: pointer;
-  height: calc(100% - 10px);
-  width: calc(100% - 10px);
+  height: calc(100% - 7px);
+  width: calc(100% - 7px);
   border: 0;
   border-radius: 5px;
-  background-color: #000;
-  color: #fff;
+  background-color: #000000;
+  color: #ffffff;
   -webkit-transition: background-color 0.3s ease, color 0.3s ease,
     border-radius 0.3s ease; /* Safari/Chrome */
   -moz-transition: background-color 0.3s ease, color 0.3s ease,

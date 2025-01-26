@@ -54,6 +54,7 @@ function handleScroll() {
     scrollToTopBtn.style.display = "none";
     return;
   }
+  display;
 
   // Update progress indicator
   calcScrollValue();

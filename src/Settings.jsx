@@ -15,10 +15,10 @@ const initialSettings = {
   height: 50,
   borderRadius: 15,
   hoverBorderRadius: 5,
-  iconColor: "#fff",
-  hoverIconColor: "#fff",
-  bgColor: "#004CFF",
-  hoverBgColor: "#000000",
+  iconColor: "#ffffff",
+  hoverIconColor: "#000000",
+  bgColor: "#000000",
+  hoverBgColor: "#ffffff",
   progressColor: "#454545",
   left: "",
   right: 20,
@@ -91,7 +91,7 @@ const AllSettings = () => {
   ];
 
   return (
-    <div className="twsbtt-w-full">
+    <div className="twsbtt-w-full twsbtt-relative">
       {/* Tab navigation buttons */}
       <div className="twsbtt-flex twsbtt-space-x-4 twsbtt-border-b">
         {tabTitles.map((tabTitle, index) => (
@@ -111,6 +111,10 @@ const AllSettings = () => {
 
       {/* Display the content of the selected tab */}
       <div className="twsbtt-p-4">{tabContents[activeTab]}</div>
+
+      <div class="twsbtt-fixed twsbtt-bottom-4 twsbtt-right-4">
+        <button>btn</button>
+      </div>
     </div>
   );
 };
