@@ -3,6 +3,7 @@ import GeneralSettings from "./components/GeneralSettings";
 import ScrollSettings from "./components/ScrollSettings";
 import ButtonAppearance from "./components/ButtonAppearance";
 import Positioning from "./components/Positioning";
+import Preview from "./components/Preview";
 
 // Define the initial settings with default values
 const initialSettings = {
@@ -112,9 +113,7 @@ const AllSettings = () => {
       {/* Display the content of the selected tab */}
       <div className="twsbtt-p-4">{tabContents[activeTab]}</div>
 
-      <div class="twsbtt-fixed twsbtt-bottom-4 twsbtt-right-4">
-        <button>btn</button>
-      </div>
+      {settings.enabled && <Preview settings={settings} />}
     </div>
   );
 };
