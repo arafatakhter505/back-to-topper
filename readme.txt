@@ -1,46 +1,50 @@
-=== Back to Topper ===
+=== Back To Topper ===
 Contributors: yourusername
-Tags: back-to-top, navigation, UX
+Tags: back to top, button, scroll to top, customizable, user experience, responsive
 Requires at least: 5.0
-Tested up to: 6.3
-Requires PHP: 7.4
-Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-
-A simple plugin to add a back-to-top button to your WordPress site.
+Tested up to: 6.0
+Stable tag: trunk
+License: GPL2
 
 == Description ==
-Back to Topper is a lightweight and highly customizable plugin that adds a back-to-top button to your WordPress site. Improve navigation and user experience with ease.
 
-Features:
-- Fully customizable design and position.
-- Lightweight and fast-loading.
-- Compatible with all major WordPress themes.
+Back To Topper is a highly customizable and feature-rich plugin designed to enhance user experience by adding a smooth, scrollable "Back to Top" button to your WordPress site. Whether you're looking to improve site navigation or simply give your visitors an easier way to return to the top of the page, Back To Topper offers the flexibility to tailor the button to fit your theme seamlessly.
+
+== Key Features ==
+
+* **Enable/Disable Button** – Easily toggle the "Back to Top" button on or off.
+* **Auto Hide** – Configure the button to automatically hide after a specific time or based on user activity.
+* **Hide on Small Devices** – Option to hide the button on smaller devices for a better mobile experience.
+* **Icon Customization** – Change the button’s icon to suit your website design.
+* **Exclude Pages/Posts** – Exclude the button from specific pages or posts.
+* **Scroll Duration & Offset** – Adjust the scroll duration and offset to match your site’s flow.
+* **Button Customization** – Customize the button’s size, border radius, and padding for a perfect fit.
+* **Hover Effects** – Adjust the button's hover styles, including background color, icon color, border radius, and opacity.
+* **Scrolling Progress** – Show scrolling progress with customizable progress color.
+* **Button Position** – Control where the button appears on the page for optimal accessibility.
 
 == Installation ==
-1. Upload the plugin files to the `/wp-content/plugins/back-to-topper` directory or install the plugin through the WordPress plugin screen.
+
+1. Upload the `back-to-topper` plugin folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Configure the plugin settings under the "Back to Topper" menu in your WordPress admin panel.
+3. Configure settings by going to `Settings` → `Back To Topper`.
+
+== Changelog ==
+
+= 1.0 =
+* Initial release with all key features.
 
 == Frequently Asked Questions ==
 
-= How do I customize the back-to-top button? =
-You can customize the button through the plugin settings page, accessible from the WordPress admin dashboard.
+= How can I customize the Back To Top button? =
+You can customize the appearance and behavior of the button from the plugin settings under `Settings` → `Back To Topper`. Options include size, colors, positioning, and more.
 
-= Is this plugin compatible with my theme? =
-Back to Topper is designed to work with all major WordPress themes. If you encounter any issues, please contact support.
+= Can I exclude certain pages or posts from displaying the button? =
+Yes, you can exclude specific pages and posts from showing the Back To Top button through the plugin's settings.
 
-== Screenshots ==
-1. Example of the back-to-top button on a site.
+= Is the plugin mobile-friendly? =
+Yes, the Back To Topper plugin includes an option to hide the button on small devices, ensuring an optimal experience for mobile users.
 
-== Changelog ==
-= 1.0.0 =
-* Initial release.
+== Support ==
 
-== Upgrade Notice ==
-= 1.0.0 =
-Initial release.
-
-== License ==
-This plugin is licensed under the GPLv2 or later. For more information, visit [https://www.gnu.org/licenses/gpl-2.0.html](https://www.gnu.org/licenses/gpl-2.0.html).
+For support, please visit the [plugin support page](your-support-link).
