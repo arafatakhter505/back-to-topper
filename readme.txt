@@ -1,10 +1,13 @@
 === Back To Topper ===
-Contributors: yourusername
+Contributors: Techwave Solutions
+Author URI: https://techwavesolutions.net/
+Plugin URI: https://wordpress.org/plugins/back-to-topper/
 Tags: back to top, button, scroll to top, customizable, user experience, responsive
 Requires at least: 5.0
 Tested up to: 6.0
-Stable tag: trunk
-License: GPL2
+Stable tag: 1.0.0
+License: GPLv2 or later 
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
@@ -31,7 +34,7 @@ Back To Topper is a highly customizable and feature-rich plugin designed to enha
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * Initial release with all key features.
 
 == Frequently Asked Questions ==
@@ -47,4 +50,4 @@ Yes, the Back To Topper plugin includes an option to hide the button on small de
 
 == Support ==
 
-For support, please visit the [plugin support page](your-support-link).
+For support, please visit the [plugin support page](https://techwavesolutions.net/).

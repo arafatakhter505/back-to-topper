@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Back To Topper
- * Plugin URI:  https://wordpress.org/plugins/search/back-to-topper/
+ * Plugin URI:  https://wordpress.org/plugins/back-to-topper/
  * Description: Easily add a "Back to Top" button to your WordPress site, enhancing user experience by allowing visitors to navigate quickly to the top of the page.
  * Version:     1.0.0
  * Author:      Techwave Solutions
