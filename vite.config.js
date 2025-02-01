@@ -8,12 +8,11 @@ export default defineConfig({
     extensions: [".js", ".jsx"],
   },
   build: {
-    outDir: "admin/assets/js", // Output directory for build
+    outDir: "admin/assets/js",
     rollupOptions: {
-      input: "./src/index.jsx", // Your entry point
-      /*************  ✨ Codeium Command 🌟  *************/
+      input: "./src/index.jsx",
       output: {
-        entryFileNames: "admin-script.js", // The output filename
+        entryFileNames: "admin-script.js",
         assetFileNames: (assetInfo) => {
           if (assetInfo.name.endsWith(".css")) {
             return "admin-style.css";
@@ -21,7 +20,6 @@ export default defineConfig({
           return assetInfo.name;
         },
       },
-      /******  c2d8f5aa-6f39-46c0-ad1d-6165956e4b73  *******/
     },
   },
 });

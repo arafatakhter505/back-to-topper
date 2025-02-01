@@ -6,3 +6,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 // Remove options on uninstall.
 delete_option( 'twsbtt_plugin_settings' );
+?>
